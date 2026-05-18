@@ -1503,3 +1503,333 @@ textarea { resize: vertical; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 ::selection { background: rgba(245, 194, 0, 0.3); }
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME TOGGLE BUTTON
+═══════════════════════════════════════════════════════════════ */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: var(--yellow-soft);
+  border: 1.5px solid var(--beige);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 0.04em;
+  transition: var(--transition);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  transform: translateY(-1px);
+}
+
+.theme-icon { font-size: 0.9rem; }
+
+/* ═══════════════════════════════════════════════════════════════
+   GEN-Z THEME  —  [data-theme="genz"]
+   Colors pulled from the logo: electric yellow, deep teal,
+   dark bg, bold typography.
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Google Font imports for Gen-Z (Syne + Space Grotesk) are
+   preloaded in <head>; font-family is switched via variables. ── */
+
+[data-theme="genz"] {
+  /* Backgrounds */
+  --cream:        #0c0c0c;
+  --cream-dark:   #1c1c1c;
+  --beige:        #2e2e2e;
+
+  /* Brand colours */
+  --brown-light:  #FFD60A;
+  --brown:        #E6B800;
+  --accent:       #00C896;
+  --accent-light: #00FFB3;
+  --accent-soft:  #052e22;
+  --yellow:       #FFD60A;
+  --yellow-soft:  #1f1900;
+  --yellow-mid:   #FFB800;
+  --sage:         #00E676;
+
+  /* Text */
+  --text-dark:    #F0F0F0;
+  --text-mid:     #BBBBBB;
+  --text-muted:   #777777;
+
+  /* Surfaces */
+  --white:        #181818;
+  --card-bg:      #1a1a1a;
+  --shadow:       rgba(255, 214, 10, 0.08);
+  --shadow-hover: rgba(255, 214, 10, 0.2);
+
+  /* Typography — Gen-Z fonts */
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-body:    'Space Grotesk', system-ui, sans-serif;
+}
+
+/* ── Body ────────────────────────────────────────────────────── */
+[data-theme="genz"] body {
+  background: var(--cream);
+  color: var(--text-dark);
+}
+
+/* ── Navbar ──────────────────────────────────────────────────── */
+[data-theme="genz"] .navbar.scrolled {
+  background: rgba(12, 12, 12, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(255, 214, 10, 0.18);
+}
+
+[data-theme="genz"] .brand-the,
+[data-theme="genz"] .brand-main {
+  font-family: 'Syne', system-ui, sans-serif;
+  color: var(--text-dark);
+}
+
+[data-theme="genz"] .nav-link  { color: var(--text-mid); }
+[data-theme="genz"] .nav-link:hover,
+[data-theme="genz"] .nav-link.active { color: #FFD60A; }
+[data-theme="genz"] .nav-link::after { background: #FFD60A; }
+
+[data-theme="genz"] .btn-nav {
+  background: #FFD60A;
+  color: #0c0c0c;
+}
+[data-theme="genz"] .btn-nav:hover { background: #FFE240; }
+
+/* Mobile nav drawer */
+[data-theme="genz"] .nav-links {
+  background: #141414;
+  border-left-color: rgba(255, 214, 10, 0.2);
+}
+[data-theme="genz"] .nav-links li + li { border-top-color: #2a2a2a; }
+[data-theme="genz"] .nav-link:hover    { background: rgba(255, 214, 10, 0.07); color: #FFD60A; }
+
+/* Theme toggle button in Gen-Z mode */
+[data-theme="genz"] .theme-toggle {
+  background: rgba(255, 214, 10, 0.1);
+  border-color: rgba(255, 214, 10, 0.35);
+  color: #FFD60A;
+}
+[data-theme="genz"] .theme-toggle:hover {
+  background: rgba(255, 214, 10, 0.2);
+  border-color: #FFD60A;
+}
+
+/* ── Hero ────────────────────────────────────────────────────── */
+[data-theme="genz"] .hero {
+  background: linear-gradient(140deg, #0c0c0c 0%, #1a1500 45%, #071e18 100%) !important;
+}
+
+[data-theme="genz"] .blob-1 {
+  background: radial-gradient(circle, rgba(255,214,10,0.35), transparent 70%);
+}
+[data-theme="genz"] .blob-2 {
+  background: radial-gradient(circle, rgba(0,200,150,0.3), transparent 70%);
+}
+[data-theme="genz"] .blob-3 {
+  background: radial-gradient(circle, rgba(255,107,107,0.2), transparent 70%);
+}
+
+[data-theme="genz"] .hero-badge {
+  background: rgba(255, 214, 10, 0.12);
+  color: #FFD60A;
+  border: 1px solid rgba(255, 214, 10, 0.3);
+  box-shadow: none;
+}
+
+[data-theme="genz"] .hero-title { color: #F0F0F0; }
+[data-theme="genz"] .hero-title em { color: #888; }
+
+[data-theme="genz"] .hero-title .highlight {
+  background: linear-gradient(90deg, #FFD60A 0%, #00C896 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+[data-theme="genz"] .hero-title .highlight::after {
+  background: rgba(255, 214, 10, 0.3);
+}
+
+[data-theme="genz"] .floating-card {
+  background: #1e1e1e;
+  border-color: rgba(255, 214, 10, 0.25);
+  color: var(--text-dark);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+[data-theme="genz"] .btn-primary {
+  background: #FFD60A;
+  color: #0c0c0c;
+  box-shadow: 0 4px 20px rgba(255, 214, 10, 0.3);
+}
+[data-theme="genz"] .btn-primary:hover {
+  background: #FFE240;
+  box-shadow: 0 8px 32px rgba(255, 214, 10, 0.45);
+}
+
+[data-theme="genz"] .btn-ghost {
+  color: #FFD60A;
+  border-color: rgba(255, 214, 10, 0.4);
+}
+[data-theme="genz"] .btn-ghost:hover {
+  background: rgba(255, 214, 10, 0.08);
+  border-color: #FFD60A;
+  color: #FFD60A;
+}
+
+[data-theme="genz"] .btn-small {
+  background: rgba(255, 214, 10, 0.1);
+  border-color: rgba(255, 214, 10, 0.3);
+  color: #FFD60A;
+}
+[data-theme="genz"] .btn-small:hover,
+[data-theme="genz"] .btn-small.btn-added {
+  background: #FFD60A;
+  border-color: #FFD60A;
+  color: #0c0c0c;
+}
+
+/* ── Section helpers ─────────────────────────────────────────── */
+[data-theme="genz"] .section-tag {
+  background: rgba(0, 200, 150, 0.12);
+  color: #00C896;
+}
+
+[data-theme="genz"] .section-title { color: #F0F0F0; }
+[data-theme="genz"] .section-title em { color: #FFD60A; }
+
+/* ── About section ───────────────────────────────────────────── */
+[data-theme="genz"] .about { background: #101010; }
+
+[data-theme="genz"] .about-card {
+  background: #1a1a1a;
+  border-color: #2a2a2a;
+}
+[data-theme="genz"] .about-card:hover {
+  border-color: rgba(255, 214, 10, 0.3);
+  box-shadow: 0 12px 40px rgba(255, 214, 10, 0.08);
+}
+
+/* ── Products section ────────────────────────────────────────── */
+[data-theme="genz"] .product-card {
+  background: #1a1a1a;
+  border-color: #272727;
+}
+[data-theme="genz"] .product-card:hover {
+  box-shadow: 0 20px 60px rgba(255, 214, 10, 0.12);
+  border-color: rgba(255, 214, 10, 0.25);
+}
+[data-theme="genz"] .product-card::before {
+  background: linear-gradient(90deg, #FFD60A, #00C896);
+}
+
+[data-theme="genz"] .product-badge {
+  background: rgba(255, 214, 10, 0.15);
+  color: #FFD60A;
+}
+[data-theme="genz"] .badge-new {
+  background: rgba(0, 200, 150, 0.15);
+  color: #00C896;
+}
+
+[data-theme="genz"] .product-tag   { color: #00C896; }
+[data-theme="genz"] .product-name  { color: #F0F0F0; }
+[data-theme="genz"] .product-price { color: #FFD60A; }
+[data-theme="genz"] .product-price-original { color: #555; }
+
+[data-theme="genz"] .product-footer { border-top-color: #272727; }
+
+[data-theme="genz"] .weight-btn {
+  background: #222;
+  border-color: #333;
+  color: var(--text-muted);
+}
+[data-theme="genz"] .weight-btn.active {
+  background: rgba(255, 214, 10, 0.15);
+  border-color: #FFD60A;
+  color: #FFD60A;
+}
+
+[data-theme="genz"] .discount-pill {
+  background: rgba(0, 230, 118, 0.12);
+  color: #00E676;
+}
+
+[data-theme="genz"] .products-note {
+  background: rgba(255, 214, 10, 0.06);
+  border-color: rgba(255, 214, 10, 0.2);
+  color: #BBB;
+}
+
+/* Combo cards */
+[data-theme="genz"] .product-card-combo {
+  background: linear-gradient(135deg, #0a1a14 0%, #0e2218 100%);
+  border: 1px solid rgba(0, 200, 150, 0.25);
+}
+[data-theme="genz"] .product-card-combo:hover {
+  border-color: rgba(0, 200, 150, 0.5);
+  box-shadow: 0 20px 60px rgba(0, 200, 150, 0.12);
+}
+[data-theme="genz"] .badge-bestseller { background: rgba(0,200,150,0.2); color: #00C896; }
+[data-theme="genz"] .ingredients-header { border-bottom-color: rgba(0,200,150,0.25); }
+[data-theme="genz"] .ingredients-header > div:first-child { border-right-color: rgba(0,200,150,0.2); }
+[data-theme="genz"] .ingredient-row:nth-child(odd) { border-right-color: rgba(0,200,150,0.2); }
+[data-theme="genz"] .ingredient-row:hover { background: rgba(0,200,150,0.08); }
+[data-theme="genz"] .ingredient-name  { color: #DDD; }
+[data-theme="genz"] .ingredient-weight { color: #00C896; }
+[data-theme="genz"] .ingredients-total { border-top-color: rgba(0,200,150,0.3); color: #00C896; }
+[data-theme="genz"] .combo-size-pill   { background: rgba(0,200,150,0.15); color: #00C896; border-color: rgba(0,200,150,0.3); }
+
+/* ── Contact section ─────────────────────────────────────────── */
+[data-theme="genz"] .contact { background: #101010; }
+
+[data-theme="genz"] .contact-cta-group {
+  background: #1a1a1a;
+  border-color: #2a2a2a;
+}
+
+[data-theme="genz"] .social-link { color: #999; }
+[data-theme="genz"] .social-link:hover { color: #FFD60A; }
+
+/* ── Footer ──────────────────────────────────────────────────── */
+[data-theme="genz"] .footer { background: #080808; }
+[data-theme="genz"] .footer-bottom { border-top-color: rgba(255,255,255,0.06); }
+
+/* ── Cart widget ─────────────────────────────────────────────── */
+[data-theme="genz"] .cart-bar {
+  background: linear-gradient(90deg, #1a1a1a, #1f1f1f);
+  border-color: rgba(255, 214, 10, 0.2);
+  box-shadow: 0 -4px 30px rgba(255, 214, 10, 0.08);
+}
+[data-theme="genz"] .cart-bar-summary { color: var(--text-dark); }
+[data-theme="genz"] .cart-total-label { color: #888; }
+[data-theme="genz"] .cart-total-value { color: #FFD60A; }
+[data-theme="genz"] .btn-whatsapp-order { background: #25d366; }
+
+[data-theme="genz"] .cart-drawer {
+  background: #141414;
+  border-color: rgba(255, 214, 10, 0.15);
+}
+[data-theme="genz"] .cart-drawer-header { border-bottom-color: #2a2a2a; }
+[data-theme="genz"] .cart-item         { border-bottom-color: #222; }
+[data-theme="genz"] .cart-item-controls { background: #222; }
+[data-theme="genz"] .cart-item-subtotal { color: #FFD60A; }
+[data-theme="genz"] .cart-qty-btn      { color: #00C896; }
+[data-theme="genz"] .cart-drawer-footer { border-top-color: #2a2a2a; background: #1a1a1a; }
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+[data-theme="genz"] ::-webkit-scrollbar-track { background: #1a1a1a; }
+[data-theme="genz"] ::-webkit-scrollbar-thumb { background: #FFD60A; }
+[data-theme="genz"] ::-webkit-scrollbar-thumb:hover { background: #00C896; }

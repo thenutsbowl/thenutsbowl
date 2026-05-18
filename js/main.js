@@ -6,6 +6,32 @@
 (function () {
   'use strict';
 
+  // ── Theme toggle ──────────────────────────────────────────────
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon   = themeToggle.querySelector('.theme-icon');
+  const themeLabel  = themeToggle.querySelector('.theme-label');
+
+  function applyTheme(theme) {
+    if (theme === 'genz') {
+      document.documentElement.setAttribute('data-theme', 'genz');
+      themeIcon.textContent  = '⚡';
+      themeLabel.textContent = 'Vibe';
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      themeIcon.textContent  = '🌿';
+      themeLabel.textContent = 'Classic';
+    }
+  }
+
+  // Restore saved preference
+  applyTheme(localStorage.getItem('theme') || 'classic');
+
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'genz' ? 'classic' : 'genz';
+    localStorage.setItem('theme', next);
+    applyTheme(next);
+  });
+
   // ── Navbar: scroll state ──────────────────────────────────────
   const navbar = document.getElementById('navbar');
 
@@ -148,7 +174,7 @@
     if (sub)   sub.innerHTML     = data.subtitle;
     if (cta)   cta.innerHTML     = data.cta.map(c =>
       `<a href="${c.href}" class="${c.class}">${c.text}</a>`
-    ).join('\\n');
+    ).join('\n');
   }
 
   // ── Section content: apply about ─────────────────────────────
