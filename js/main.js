@@ -26,19 +26,30 @@
   const mobileOverlay = document.getElementById('mobileOverlay');
 
   function openNav() {
+    const scrollY = window.scrollY;
     navLinks.classList.add('open');
     mobileOverlay.classList.add('show');
     hamburger.classList.add('open');
     hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
+    // Fix body scroll on iOS Safari too
+    document.body.dataset.scrollY = scrollY;
+    document.body.style.overflow   = 'hidden';
+    document.body.style.position   = 'fixed';
+    document.body.style.top        = `-${scrollY}px`;
+    document.body.style.width      = '100%';
   }
 
   function closeNav() {
+    const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
     navLinks.classList.remove('open');
     mobileOverlay.classList.remove('show');
     hamburger.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top      = '';
+    document.body.style.width    = '';
+    window.scrollTo(0, scrollY);
   }
 
   hamburger.addEventListener('click', () => {
@@ -116,6 +127,133 @@
     });
   });
 
+  // ── Price helpers ─────────────────────────────────────────────
+  function calcPrice(card, weight) {
+    const perKg    = Number(card.dataset.pricePerKg);
+    const discount = Number(card.dataset.discount || 0);
+    const raw = Math.round(perKg * weight / 1000);
+    return Math.round(raw * (1 - discount / 100));
+  }
+
+  function formatWeight(w) { return w === 1000 ? '1kg' : `${w}g`; }
+
+  // ── Prices: load from JSON and apply to product cards ────────
+  function applyPrices(prices) {
+    const priceMap = {};
+    prices.forEach(p => { priceMap[p.name] = p; });
+
+    document.querySelectorAll('.product-card').forEach(card => {
+      const nameBtn = card.querySelector('.btn-add-cart');
+      if (!nameBtn) return;
+      const itemName = nameBtn.dataset.name;
+      const entry = priceMap[itemName];
+      if (!entry) return;
+
+      if (entry.fixedPrice != null) {
+        card.dataset.fixedPrice = entry.fixedPrice;
+        card.querySelector('.product-price').textContent = `₹${entry.fixedPrice}`;
+      } else {
+        card.dataset.pricePerKg = entry.pricePerKg;
+        if (entry.mrpPerKg) card.dataset.mrpPerKg = entry.mrpPerKg;
+
+        const activeBtn = card.querySelector('.weight-btn.active');
+        const weight = activeBtn ? Number(activeBtn.dataset.weight) : 200;
+        card.querySelector('.product-price').textContent = `₹${calcPrice(card, weight)}`;
+
+        const origEl = card.querySelector('.product-price-original');
+        if (origEl && entry.mrpPerKg) {
+          origEl.textContent = `₹${Math.round(entry.mrpPerKg * weight / 1000)}`;
+        }
+        const pillEl = card.querySelector('.discount-pill');
+        if (pillEl && entry.mrpPerKg) {
+          const pct = Math.round((1 - entry.pricePerKg / entry.mrpPerKg) * 100);
+          pillEl.textContent = `${pct}% off`;
+        }
+      }
+    });
+  }
+
+  fetch('js/prices.json')
+    .then(r => r.json())
+    .then(applyPrices)
+    .catch(err => console.warn('prices.json not loaded:', err));
+
+  // ── Combos: render cards from combos.json ─────────────────────
+  function buildComboCard(combo) {
+    const seedIcons = combo.ingredients
+      .map(i => `<span title="${i.name}">${i.emoji}</span>`)
+      .join('');
+
+    const rows = combo.ingredients
+      .map(i => `
+        <div class="ingredient-row">
+          <span class="ingredient-name">${i.emoji} ${i.name}</span>
+          <span class="ingredient-weight">${i.weight}</span>
+        </div>`)
+      .join('');
+
+    return `
+      <div class="product-card product-card-diy product-card-combo reveal"
+           data-fixed-price="${combo.price}">
+        <div class="diy-left">
+          <div class="product-badge ${combo.badgeClass || 'badge-bestseller'}">${combo.badge}</div>
+          <div class="product-emoji">${combo.emoji}</div>
+          <div class="diy-seeds-row">${seedIcons}</div>
+        </div>
+        <div class="product-info">
+          <span class="product-tag">${combo.tag}</span>
+          <h3 class="product-name">${combo.name}</h3>
+          <p class="product-desc">${combo.desc}</p>
+          <div class="combo-ingredients">
+            <div class="ingredients-header">
+              <div><span>Ingredient</span><span>Weight</span></div>
+              <div><span>Ingredient</span><span>Weight</span></div>
+            </div>
+            <div class="ingredients-list">${rows}</div>
+            <div class="ingredients-total">
+              <span>Total Weight</span><span>${combo.totalWeight}</span>
+            </div>
+          </div>
+          <div class="product-footer">
+            <div class="price-stack">
+              <div class="price-mrp-row">
+                <span class="combo-size-pill">Fixed ${combo.totalWeight}</span>
+                ${combo.mrp ? `<span class="product-price-original">₹${combo.mrp}</span>` : ''}
+                ${combo.mrp ? `<span class="discount-pill">${Math.round((1 - combo.price / combo.mrp) * 100)}% off</span>` : ''}
+              </div>
+              <span class="product-price">₹${combo.price}</span>
+            </div>
+            <button class="btn btn-small btn-add-cart"
+                    data-name="${combo.name}"
+                    data-emoji="${combo.emoji}">+ Add to Cart</button>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  fetch('js/combos.json')
+    .then(r => r.json())
+    .then(combos => {
+      const anchor = document.getElementById('combos-anchor');
+      combos.forEach(combo => {
+        anchor.insertAdjacentHTML('beforebegin', buildComboCard(combo));
+      });
+      // Trigger scroll-reveal for newly added cards
+      document.querySelectorAll('.product-card-combo.reveal:not(.visible)').forEach(el => {
+        if ('IntersectionObserver' in window) {
+          const obs = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+            });
+          }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+          obs.observe(el);
+        } else {
+          el.classList.add('visible');
+        }
+      });
+    })
+    .catch(err => console.warn('combos.json not loaded:', err));
+
   // ── Cart ──────────────────────────────────────────────────────
   const WHATSAPP_NUMBER = '919870505923';
 
@@ -132,15 +270,6 @@
   const cartDrawerTotal = document.getElementById('cartDrawerTotal');
   const cartWhatsappBtn = document.getElementById('cartWhatsappBtn');
   const cartChevron     = document.getElementById('cartChevron');
-
-  function calcPrice(card, weight) {
-    const perKg    = Number(card.dataset.pricePerKg);
-    const discount = Number(card.dataset.discount || 0);
-    const raw = Math.round(perKg * weight / 1000);
-    return Math.round(raw * (1 - discount / 100));
-  }
-
-  function formatWeight(w) { return w === 1000 ? '1kg' : `${w}g`; }
 
   function buildWhatsAppUrl() {
     const lines = cart.map(
@@ -222,27 +351,37 @@
     card.querySelector('.product-price').textContent = `₹${calcPrice(card, weight)}`;
 
     const origEl = card.querySelector('.product-price-original');
-    if (origEl) {
-      origEl.textContent = `₹${Math.round(Number(card.dataset.pricePerKg) * weight / 1000)}`;
+    if (origEl && card.dataset.mrpPerKg) {
+      origEl.textContent = `₹${Math.round(Number(card.dataset.mrpPerKg) * weight / 1000)}`;
     }
   });
 
-  // Add to cart
-  document.querySelectorAll('.btn-add-cart').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const card   = btn.closest('.product-card');
-      const activeWt = card.querySelector('.weight-btn.active');
-      const weight = activeWt ? Number(activeWt.dataset.weight) : 200;
-      const label  = `${btn.dataset.name} (${formatWeight(weight)})`;
-      addToCart(label, calcPrice(card, weight), btn.dataset.emoji);
+  // Add to cart — event delegation covers both static and combo cards
+  document.querySelector('.products-grid').addEventListener('click', e => {
+    const btn = e.target.closest('.btn-add-cart');
+    if (!btn) return;
+    const card    = btn.closest('.product-card');
+    const isFixed = card.dataset.fixedPrice != null && card.dataset.fixedPrice !== '';
+    let price, label;
 
-      btn.textContent = '✓ Added!';
-      btn.classList.add('btn-added');
-      setTimeout(() => {
-        btn.textContent = '+ Add to Cart';
-        btn.classList.remove('btn-added');
-      }, 1200);
-    });
+    if (isFixed) {
+      price = Number(card.dataset.fixedPrice);
+      label = `${btn.dataset.name} (${card.dataset.fixedWeight || card.querySelector('.combo-size-pill')?.textContent?.replace('Fixed ', '') || 'combo'})`;
+    } else {
+      const activeWt = card.querySelector('.weight-btn.active');
+      const weight   = activeWt ? Number(activeWt.dataset.weight) : 200;
+      price = calcPrice(card, weight);
+      label = `${btn.dataset.name} (${formatWeight(weight)})`;
+    }
+
+    addToCart(label, price, btn.dataset.emoji);
+
+    btn.textContent = '✓ Added!';
+    btn.classList.add('btn-added');
+    setTimeout(() => {
+      btn.textContent = '+ Add to Cart';
+      btn.classList.remove('btn-added');
+    }, 1200);
   });
 
   // Toggle drawer

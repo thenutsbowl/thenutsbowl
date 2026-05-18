@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Healthy Seed Mix",
+    "tag": "High Profit · Recommended Bestseller",
+    "badge": "⭐ Bestseller",
+    "badgeClass": "badge-bestseller",
+    "emoji": "🥗",
+    "desc": "Your go-to daily wellness combo — four essential seeds perfectly portioned for a nourishing morning routine or guilt-free midday snack. Light, clean and naturally delicious.",
+    "ingredients": [
+      { "emoji": "🌻", "name": "Sunflower Seeds", "weight": "150g" },
+      { "emoji": "🌾", "name": "Flax Seeds",       "weight": "150g" },
+      { "emoji": "🍈", "name": "MuskMelon Seeds",  "weight": "100g" },
+      { "emoji": "🎃", "name": "Pumpkin Seeds",    "weight": "100g" }
+    ],
+    "totalWeight": "500g",
+    "mrp": 499,
+    "price": 399
+  },
+  {
+    "name": "Ultimate Seed Blend",
+    "tag": "Premium Mix · 6 Superseeds",
+    "badge": "🌿 Premium",
+    "badgeClass": "badge-bestseller",
+    "emoji": "🫙",
+    "desc": "Six premium superseeds in one power-packed 1kg jar. Loaded with omega-3, zinc, magnesium and antioxidants — the complete nutrition powerhouse for serious health enthusiasts.",
+    "ingredients": [
+      { "emoji": "🍉", "name": "Watermelon Seeds", "weight": "150g" },
+      { "emoji": "🍈", "name": "MuskMelon Seeds",  "weight": "150g" },
+      { "emoji": "🎃", "name": "Pumpkin Seeds",    "weight": "200g" },
+      { "emoji": "🌑", "name": "Chia Seeds",       "weight": "150g" },
+      { "emoji": "🌻", "name": "Sunflower Seeds",  "weight": "200g" },
+      { "emoji": "🌾", "name": "Flax Seeds",       "weight": "150g" }
+    ],
+    "totalWeight": "1000g",
+    "mrp": 1599,
+    "price": 1299
+  },
+  {
+    "name": "Sampler Seed Mix",
+    "tag": "Try All 6 Seeds · Starter Pack",
+    "badge": "🎯 Try It",
+    "badgeClass": "badge-new",
+    "emoji": "🌿",
+    "desc": "New to superseeds? This is your perfect start — equal portions of all six seeds to explore every flavour and find your favourite blend.",
+    "ingredients": [
+      { "emoji": "🍉", "name": "Watermelon Seeds", "weight": "50g" },
+      { "emoji": "🎃", "name": "Pumpkin Seeds",    "weight": "50g" },
+      { "emoji": "🌑", "name": "Chia Seeds",       "weight": "50g" },
+      { "emoji": "🌾", "name": "Flax Seeds",       "weight": "50g" },
+      { "emoji": "🌻", "name": "Sunflower Seeds",  "weight": "50g" },
+      { "emoji": "🍈", "name": "MuskMelon Seeds",  "weight": "50g" }
+    ],
+    "totalWeight": "300g",
+    "mrp": 549,
+    "price": 450
+  }
+]
+
