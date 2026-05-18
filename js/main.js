@@ -103,49 +103,6 @@
 
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // ── Contact Form ──────────────────────────────────────────────
-  const form        = document.getElementById('contactForm');
-  const formSuccess = document.getElementById('formSuccess');
-
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const name    = form.name.value.trim();
-      const email   = form.email.value.trim();
-      const message = form.message.value.trim();
-
-      if (!name || !email || !message) {
-        // Simple shake animation on empty fields
-        [form.name, form.email, form.message].forEach(field => {
-          if (!field.value.trim()) {
-            field.style.borderColor = '#1b6357';
-            field.addEventListener('input', () => {
-              field.style.borderColor = '';
-            }, { once: true });
-          }
-        });
-        return;
-      }
-
-      const submitBtn = form.querySelector('[type="submit"]');
-      submitBtn.textContent = 'Sending…';
-      submitBtn.disabled = true;
-
-      // Simulate send (replace with actual API/Formspree endpoint)
-      setTimeout(() => {
-        form.reset();
-        formSuccess.classList.add('show');
-        submitBtn.textContent = 'Send it 🚀';
-        submitBtn.disabled = false;
-
-        setTimeout(() => {
-          formSuccess.classList.remove('show');
-        }, 5000);
-      }, 1000);
-    });
-  }
-
   // ── Smooth scroll for anchor links ───────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -157,6 +114,164 @@
         window.scrollTo({ top, behavior: 'smooth' });
       }
     });
+  });
+
+  // ── Cart ──────────────────────────────────────────────────────
+  const WHATSAPP_NUMBER = '919870505923';
+
+  let cart = [];
+
+  const cartWidget      = document.getElementById('cartWidget');
+  const cartBarToggle   = document.getElementById('cartBarToggle');
+  const cartBarCount    = document.getElementById('cartBarCount');
+  const cartBarTotal    = document.getElementById('cartBarTotal');
+  const cartBarWhatsapp = document.getElementById('cartBarWhatsapp');
+  const cartDrawer      = document.getElementById('cartDrawer');
+  const cartDrawerClose = document.getElementById('cartDrawerClose');
+  const cartItems       = document.getElementById('cartItems');
+  const cartDrawerTotal = document.getElementById('cartDrawerTotal');
+  const cartWhatsappBtn = document.getElementById('cartWhatsappBtn');
+  const cartChevron     = document.getElementById('cartChevron');
+
+  function calcPrice(card, weight) {
+    const perKg    = Number(card.dataset.pricePerKg);
+    const discount = Number(card.dataset.discount || 0);
+    const raw = Math.round(perKg * weight / 1000);
+    return Math.round(raw * (1 - discount / 100));
+  }
+
+  function formatWeight(w) { return w === 1000 ? '1kg' : `${w}g`; }
+
+  function buildWhatsAppUrl() {
+    const lines = cart.map(
+      item => `• ${item.emoji} ${item.name} x${item.qty} — ₹${item.price * item.qty}`
+    );
+    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const text = [
+      "Hi! I'd like to place an order \uD83E\uDD5C",
+      '',
+      'Items:',
+      ...lines,
+      '',
+      `Total: ₹${total}`,
+      '',
+      'Please confirm availability!'
+    ].join('\n');
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  }
+
+  function getTotal() {
+    return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  }
+
+  function renderCart() {
+    const total = getTotal();
+    const count = cart.reduce((sum, item) => sum + item.qty, 0);
+
+    cartBarCount.textContent = `${count} item${count !== 1 ? 's' : ''}`;
+    cartBarTotal.textContent = `₹${total}`;
+    cartDrawerTotal.textContent = `₹${total}`;
+
+    const waUrl = buildWhatsAppUrl();
+    cartBarWhatsapp.href = waUrl;
+    cartWhatsappBtn.href = waUrl;
+
+    if (count === 0) {
+      cartWidget.classList.remove('cart-visible');
+      cartDrawer.hidden = true;
+      cartChevron.textContent = '▲';
+    } else {
+      cartWidget.classList.add('cart-visible');
+    }
+
+    cartItems.innerHTML = cart.map((item, i) => `
+      <li class="cart-item" data-index="${i}">
+        <span class="cart-item-emoji">${item.emoji}</span>
+        <span class="cart-item-name">${item.name}</span>
+        <div class="cart-item-controls">
+          <button class="cart-qty-btn" data-action="dec" data-index="${i}" aria-label="Decrease">−</button>
+          <span class="cart-item-qty">${item.qty}</span>
+          <button class="cart-qty-btn" data-action="inc" data-index="${i}" aria-label="Increase">+</button>
+        </div>
+        <span class="cart-item-subtotal">₹${item.price * item.qty}</span>
+        <button class="cart-item-remove" data-index="${i}" aria-label="Remove">✕</button>
+      </li>
+    `).join('');
+  }
+
+  function addToCart(name, price, emoji) {
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ name, price: Number(price), emoji, qty: 1 });
+    }
+    renderCart();
+  }
+
+  // Weight button clicks — update price display
+  document.querySelector('.products-grid').addEventListener('click', e => {
+    const btn = e.target.closest('.weight-btn');
+    if (!btn) return;
+    const card   = btn.closest('.product-card');
+    const weight = Number(btn.dataset.weight);
+
+    card.querySelectorAll('.weight-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    card.querySelector('.product-price').textContent = `₹${calcPrice(card, weight)}`;
+
+    const origEl = card.querySelector('.product-price-original');
+    if (origEl) {
+      origEl.textContent = `₹${Math.round(Number(card.dataset.pricePerKg) * weight / 1000)}`;
+    }
+  });
+
+  // Add to cart
+  document.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card   = btn.closest('.product-card');
+      const activeWt = card.querySelector('.weight-btn.active');
+      const weight = activeWt ? Number(activeWt.dataset.weight) : 200;
+      const label  = `${btn.dataset.name} (${formatWeight(weight)})`;
+      addToCart(label, calcPrice(card, weight), btn.dataset.emoji);
+
+      btn.textContent = '✓ Added!';
+      btn.classList.add('btn-added');
+      setTimeout(() => {
+        btn.textContent = '+ Add to Cart';
+        btn.classList.remove('btn-added');
+      }, 1200);
+    });
+  });
+
+  // Toggle drawer
+  cartBarToggle.addEventListener('click', () => {
+    const isOpen = !cartDrawer.hidden;
+    cartDrawer.hidden = isOpen;
+    cartChevron.textContent = isOpen ? '▲' : '▼';
+  });
+
+  cartDrawerClose.addEventListener('click', () => {
+    cartDrawer.hidden = true;
+    cartChevron.textContent = '▲';
+  });
+
+  // Qty controls & remove (event delegation)
+  cartItems.addEventListener('click', e => {
+    const btn = e.target.closest('[data-action], .cart-item-remove');
+    if (!btn) return;
+    const idx = Number(btn.dataset.index);
+
+    if (btn.classList.contains('cart-item-remove')) {
+      cart.splice(idx, 1);
+    } else if (btn.dataset.action === 'inc') {
+      cart[idx].qty++;
+    } else if (btn.dataset.action === 'dec') {
+      cart[idx].qty--;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+    }
+    renderCart();
   });
 
 })();
