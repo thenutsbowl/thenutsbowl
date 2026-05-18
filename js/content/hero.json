@@ -1,0 +1,9 @@
+{
+  "badge": "✦ 100% Natural · Small Batch · DIY Seed Kits",
+  "titleHTML": "Snacking,<br /><em>but make it</em><br /><span class=\"highlight\">iconic.</span>",
+  "subtitle": "Premium nuts &amp; snacks crafted for people who refuse to settle.<br class=\"br-desktop\" />Real ingredients. Bold flavors. Zero guilt.",
+  "cta": [
+    { "text": "Explore the Bowl", "href": "#products", "class": "btn btn-primary" },
+    { "text": "Our Story ↓", "href": "#about", "class": "btn btn-ghost" }
+  ]
+}

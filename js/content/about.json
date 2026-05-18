@@ -1,0 +1,12 @@
+
+{
+  "sectionTag": "who we are",
+  "titleHTML": "Born from a love of<br /><em>real</em> food.",
+  "description": "The Nut Bowl started with one simple question: why is healthy snacking so boring? We said no thanks to artificial flavors and yes to nuts that actually taste like something.",
+  "cards": [
+    { "icon": "🌿", "title": "All Natural", "description": "No preservatives, no artificial flavors. Just real nuts, real spices, real flavor.", "revealDelay": 0 },
+    { "icon": "✦", "title": "Small Batch", "description": "Crafted in small batches to guarantee freshness in every single handful.", "revealDelay": 1 },
+    { "icon": "🌱", "title": "DIY Seed Kits", "description": "Build your own superfood bowl — chia, flax, pumpkin, watermelon &amp; muskmelon seeds. Your mix, your rules.", "revealDelay": 2 },
+    { "icon": "🥣", "title": "Mix &amp; Match", "description": "Combine seeds &amp; nuts any way you like. Every bowl is as unique as the person making it.", "revealDelay": 3 }
+  ]
+}

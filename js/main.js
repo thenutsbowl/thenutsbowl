@@ -137,6 +137,118 @@
 
   function formatWeight(w) { return w === 1000 ? '1kg' : `${w}g`; }
 
+  // ── Section content: apply hero ───────────────────────────────
+  function applyHero(data) {
+    const badge = document.getElementById('heroBadge');
+    const title = document.getElementById('heroTitle');
+    const sub   = document.getElementById('heroSub');
+    const cta   = document.getElementById('heroCtaGroup');
+    if (badge) badge.textContent = data.badge;
+    if (title) title.innerHTML   = data.titleHTML;
+    if (sub)   sub.innerHTML     = data.subtitle;
+    if (cta)   cta.innerHTML     = data.cta.map(c =>
+      `<a href="${c.href}" class="${c.class}">${c.text}</a>`
+    ).join('\\n');
+  }
+
+  // ── Section content: apply about ─────────────────────────────
+  function applyAbout(data) {
+    const tag   = document.getElementById('aboutTag');
+    const title = document.getElementById('aboutTitle');
+    const desc  = document.getElementById('aboutDesc');
+    const grid  = document.getElementById('aboutGrid');
+    if (tag)   tag.textContent  = data.sectionTag;
+    if (title) title.innerHTML  = data.titleHTML;
+    if (desc)  desc.textContent = data.description;
+    if (grid)  grid.innerHTML   = data.cards.map(c => {
+      const delay = c.revealDelay > 0 ? ` reveal-delay-${c.revealDelay}` : '';
+      return `
+      <div class="about-card reveal${delay}">
+        <div class="about-icon">${c.icon}</div>
+        <h3>${c.title}</h3>
+        <p>${c.description}</p>
+      </div>`;
+    }).join('');
+  }
+
+  // ── Section content: build & render product cards ─────────────
+  function buildProductCard(product, index) {
+    const delays = ['', ' reveal-delay-1', ' reveal-delay-2'];
+    const delay  = delays[index % 3];
+    const weights = product.weights.map((w, i) =>
+      `<button class="weight-btn${i === 0 ? ' active' : ''}" data-weight="${w}">${w >= 1000 ? (w / 1000) + 'kg' : w + 'g'}</button>`
+    ).join('');
+    return `
+    <div class="product-card reveal${delay}" data-price-per-kg="0">
+      <div class="product-badge${product.badgeClass ? ' ' + product.badgeClass : ''}">${product.badge}</div>
+      <div class="product-emoji">${product.emoji}</div>
+      <div class="product-info">
+        <span class="product-tag">${product.tag}</span>
+        <h3 class="product-name">${product.name}</h3>
+        <p class="product-desc">${product.description}</p>
+        <div class="weight-selector">${weights}</div>
+        <div class="product-footer">
+          <div class="price-stack">
+            <div class="price-mrp-row">
+              <span class="product-price-original"></span>
+              <span class="discount-pill"></span>
+            </div>
+            <span class="product-price">—</span>
+          </div>
+          <button class="btn btn-small btn-add-cart" data-name="${product.name}" data-emoji="${product.emoji}">+ Add to Cart</button>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function applyProducts(data) {
+    const tag   = document.getElementById('productsTag');
+    const title = document.getElementById('productsTitle');
+    const desc  = document.getElementById('productsDesc');
+    const note  = document.getElementById('productsNote');
+    const grid  = document.getElementById('productsGrid');
+    if (tag)   tag.textContent = data.sectionTag;
+    if (title) title.innerHTML = data.titleHTML;
+    if (desc)  desc.innerHTML  = data.description;
+    if (note)  note.innerHTML  = data.note;
+    if (grid) {
+      const anchor = document.getElementById('combos-anchor');
+      if (!anchor) return;
+      data.products.forEach((product, i) => {
+        anchor.insertAdjacentHTML('beforebegin', buildProductCard(product, i));
+      });
+    }
+  }
+
+  // ── Section content: apply contact ────────────────────────────
+  function applyContact(data) {
+    const tag   = document.getElementById('contactTag');
+    const title = document.getElementById('contactTitle');
+    const desc  = document.getElementById('contactDesc');
+    if (tag)   tag.textContent  = data.sectionTag;
+    if (title) title.innerHTML  = data.titleHTML;
+    if (desc)  desc.textContent = data.description;
+
+    const waUrl = `https://wa.me/${data.whatsapp}`;
+    const igUrl = `https://instagram.com/${data.instagram}`;
+
+    const waS   = document.getElementById('contactWhatsappSocial');
+    const igS   = document.getElementById('contactInstagramSocial');
+    const waCta = document.getElementById('contactWhatsappCta');
+    const igCta = document.getElementById('contactInstagramCta');
+
+    if (waS) waS.href = waUrl;
+    if (igS) igS.href = igUrl;
+    if (waCta) {
+      waCta.href = waUrl;
+      waCta.querySelector('span') && (waCta.querySelector('span').textContent = data.ctaWhatsappText);
+    }
+    if (igCta) {
+      igCta.href = igUrl;
+      igCta.querySelector('span') && (igCta.querySelector('span').textContent = data.ctaInstagramText);
+    }
+  }
+
   // ── Prices: load from JSON and apply to product cards ────────
   function applyPrices(prices) {
     const priceMap = {};
@@ -172,11 +284,6 @@
       }
     });
   }
-
-  fetch('js/prices.json')
-    .then(r => r.json())
-    .then(applyPrices)
-    .catch(err => console.warn('prices.json not loaded:', err));
 
   // ── Combos: render cards from combos.json ─────────────────────
   function buildComboCard(combo) {
@@ -231,28 +338,42 @@
       </div>`;
   }
 
-  fetch('js/combos.json')
-    .then(r => r.json())
-    .then(combos => {
-      const anchor = document.getElementById('combos-anchor');
-      combos.forEach(combo => {
-        anchor.insertAdjacentHTML('beforebegin', buildComboCard(combo));
-      });
-      // Trigger scroll-reveal for newly added cards
-      document.querySelectorAll('.product-card-combo.reveal:not(.visible)').forEach(el => {
-        if ('IntersectionObserver' in window) {
-          const obs = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
-            });
-          }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-          obs.observe(el);
-        } else {
-          el.classList.add('visible');
-        }
-      });
-    })
-    .catch(err => console.warn('combos.json not loaded:', err));
+  // ── Load all section content and product data in parallel ─────
+  Promise.all([
+    fetch('js/content/hero.json').then(r => r.json()),
+    fetch('js/content/about.json').then(r => r.json()),
+    fetch('js/content/products.json').then(r => r.json()),
+    fetch('js/content/contact.json').then(r => r.json()),
+    fetch('js/prices.json').then(r => r.json()),
+    fetch('js/combos.json').then(r => r.json()),
+  ]).then(([hero, about, productsContent, contact, prices, combos]) => {
+    // 1. Inject text content
+    applyHero(hero);
+    applyAbout(about);
+    applyContact(contact);
+
+    // 2. Render product cards, then apply prices (prices need cards in DOM)
+    applyProducts(productsContent);
+    applyPrices(prices);
+
+    // 3. Render combo cards
+    const anchor = document.getElementById('combos-anchor');
+    combos.forEach(combo => anchor.insertAdjacentHTML('beforebegin', buildComboCard(combo)));
+
+    // 4. Re-run scroll reveal for all dynamically injected elements
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+      if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        obs.observe(el);
+      } else {
+        el.classList.add('visible');
+      }
+    });
+  }).catch(err => console.warn('Content load error:', err));
 
   // ── Cart ──────────────────────────────────────────────────────
   const WHATSAPP_NUMBER = '919870505923';

@@ -103,17 +103,17 @@
     <div class="hero-bg-blob blob-3"></div>
 
     <div class="hero-content reveal">
-      <span class="hero-badge">✦ 100% Natural &nbsp;·&nbsp; Small Batch &nbsp;·&nbsp; DIY Seed Kits</span>
-      <h1 class="hero-title">
+      <span id="heroBadge" class="hero-badge">✦ 100% Natural &nbsp;·&nbsp; Small Batch &nbsp;·&nbsp; DIY Seed Kits</span>
+      <h1 id="heroTitle" class="hero-title">
         Snacking,<br />
         <em>but make it</em><br />
         <span class="highlight">iconic.</span>
       </h1>
-      <p class="hero-sub">
+      <p id="heroSub" class="hero-sub">
         Premium nuts &amp; snacks crafted for people who refuse to settle.<br class="br-desktop" />
         Real ingredients. Bold flavors. Zero guilt.
       </p>
-      <div class="hero-cta-group">
+      <div id="heroCtaGroup" class="hero-cta-group">
         <a href="#products" class="btn btn-primary">Explore the Bowl</a>
         <a href="#about" class="btn btn-ghost">Our Story ↓</a>
       </div>
@@ -133,36 +133,15 @@
   <section class="about" id="about">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">who we are</span>
-        <h2 class="section-title">Born from a love of<br /><em>real</em> food.</h2>
-        <p class="section-desc">
+        <span id="aboutTag" class="section-tag">who we are</span>
+        <h2 id="aboutTitle" class="section-title">Born from a love of<br /><em>real</em> food.</h2>
+        <p id="aboutDesc" class="section-desc">
           The Nut Bowl started with one simple question: why is healthy snacking so boring?
           We said no thanks to artificial flavors and yes to nuts that actually taste like something.
         </p>
       </div>
 
-      <div class="about-grid">
-        <div class="about-card reveal">
-          <div class="about-icon">🌿</div>
-          <h3>All Natural</h3>
-          <p>No preservatives, no artificial flavors. Just real nuts, real spices, real flavor.</p>
-        </div>
-        <div class="about-card reveal reveal-delay-1">
-          <div class="about-icon">✦</div>
-          <h3>Small Batch</h3>
-          <p>Crafted in small batches to guarantee freshness in every single handful.</p>
-        </div>
-        <div class="about-card reveal reveal-delay-2">
-          <div class="about-icon">🌱</div>
-          <h3>DIY Seed Kits</h3>
-          <p>Build your own superfood bowl — chia, flax, pumpkin, watermelon &amp; muskmelon seeds. Your mix, your rules.</p>
-        </div>
-        <div class="about-card reveal reveal-delay-3">
-          <div class="about-icon">🥣</div>
-          <h3>Mix &amp; Match</h3>
-          <p>Combine seeds &amp; nuts any way you like. Every bowl is as unique as the person making it.</p>
-        </div>
-      </div>
+      <div id="aboutGrid" class="about-grid"></div>
     </div>
   </section>
 
@@ -170,219 +149,17 @@
   <section class="products" id="products">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">our products</span>
-        <h2 class="section-title">Pick your<br /><em>favourite.</em></h2>
-        <p class="section-desc">Premium nuts &amp; seeds. Real ingredients, bold flavour.</p>
+        <span id="productsTag" class="section-tag">our products</span>
+        <h2 id="productsTitle" class="section-title">Pick your<br /><em>favourite.</em></h2>
+        <p id="productsDesc" class="section-desc">Premium nuts &amp; seeds. Real ingredients, bold flavour.</p>
       </div>
 
-      <div class="products-grid">
-
-        <div class="product-card reveal" data-price-per-kg="1100">
-          <div class="product-badge">Popular</div>
-          <div class="product-emoji">🌰</div>
-          <div class="product-info">
-            <span class="product-tag">Classic Nut</span>
-            <h3 class="product-name">Almonds</h3>
-            <p class="product-desc">Premium whole almonds — crunchy, nutrient-rich and perfect for snacking or adding to your bowl.</p>
-            <div class="weight-selector">
-              <button class="weight-btn active" data-weight="200">200g</button>
-              <button class="weight-btn" data-weight="500">500g</button>
-              <button class="weight-btn" data-weight="1000">1kg</button>
-            </div>
-            <div class="product-footer">
-              <div class="price-stack">
-                <div class="price-mrp-row">
-                  <span class="product-price-original">₹260</span>
-                  <span class="discount-pill">15% off</span>
-                </div>
-                <span class="product-price">₹220</span>
-              </div>
-              <button class="btn btn-small btn-add-cart" data-name="Almonds" data-emoji="🌰">+ Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal reveal-delay-1" data-price-per-kg="1100">
-          <div class="product-badge">Popular</div>
-          <div class="product-emoji">🥜</div>
-          <div class="product-info">
-            <span class="product-tag">Classic Nut</span>
-            <h3 class="product-name">Cashews</h3>
-            <p class="product-desc">Creamy, buttery cashews that hit different. Rich in healthy fats and absolutely irresistible.</p>
-            <div class="weight-selector">
-              <button class="weight-btn active" data-weight="200">200g</button>
-              <button class="weight-btn" data-weight="500">500g</button>
-              <button class="weight-btn" data-weight="1000">1kg</button>
-            </div>
-            <div class="product-footer">
-              <div class="price-stack">
-                <div class="price-mrp-row">
-                  <span class="product-price-original">₹260</span>
-                  <span class="discount-pill">15% off</span>
-                </div>
-                <span class="product-price">₹220</span>
-              </div>
-              <button class="btn btn-small btn-add-cart" data-name="Cashews" data-emoji="🥜">+ Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal reveal-delay-2" data-price-per-kg="670">
-          <div class="product-badge badge-new">Seeds</div>
-          <div class="product-emoji">🎃</div>
-          <div class="product-info">
-            <span class="product-tag">Superfood Seed</span>
-            <h3 class="product-name">Pumpkin Seeds</h3>
-            <p class="product-desc">Packed with zinc &amp; magnesium. Earthy, nutty flavour that makes every bowl feel complete.</p>
-            <div class="weight-selector">
-              <button class="weight-btn active" data-weight="200">200g</button>
-              <button class="weight-btn" data-weight="500">500g</button>
-              <button class="weight-btn" data-weight="1000">1kg</button>
-            </div>
-            <div class="product-footer">
-              <div class="price-stack">
-                <div class="price-mrp-row">
-                  <span class="product-price-original">₹160</span>
-                  <span class="discount-pill">16% off</span>
-                </div>
-                <span class="product-price">₹134</span>
-              </div>
-              <button class="btn btn-small btn-add-cart" data-name="Pumpkin Seeds" data-emoji="🎃">+ Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal" data-price-per-kg="800">
-          <div class="product-badge badge-new">Seeds</div>
-          <div class="product-emoji">🌻</div>
-          <div class="product-info">
-            <span class="product-tag">Superfood Seed</span>
-            <h3 class="product-name">Sunflower Seeds</h3>
-            <p class="product-desc">Light, crunchy &amp; loaded with vitamin E. A wholesome everyday snack your body will thank you for.</p>
-            <div class="weight-selector">
-              <button class="weight-btn active" data-weight="200">200g</button>
-              <button class="weight-btn" data-weight="500">500g</button>
-              <button class="weight-btn" data-weight="1000">1kg</button>
-            </div>
-            <div class="product-footer">
-              <div class="price-stack">
-                <div class="price-mrp-row">
-                  <span class="product-price-original">₹190</span>
-                  <span class="discount-pill">16% off</span>
-                </div>
-                <span class="product-price">₹160</span>
-              </div>
-              <button class="btn btn-small btn-add-cart" data-name="Sunflower Seeds" data-emoji="🌻">+ Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal reveal-delay-1" data-price-per-kg="1000">
-          <div class="product-badge badge-new">Seeds</div>
-          <div class="product-emoji">🍉</div>
-          <div class="product-info">
-            <span class="product-tag">Superfood Seed</span>
-            <h3 class="product-name">Watermelon Seeds</h3>
-            <p class="product-desc">High-protein, crispy seeds that surprise you every time. A bold snack from an unexpected source.</p>
-            <div class="weight-selector">
-              <button class="weight-btn active" data-weight="200">200g</button>
-              <button class="weight-btn" data-weight="500">500g</button>
-              <button class="weight-btn" data-weight="1000">1kg</button>
-            </div>
-            <div class="product-footer">
-              <div class="price-stack">
-                <div class="price-mrp-row">
-                  <span class="product-price-original">₹250</span>
-                  <span class="discount-pill">16% off</span>
-                </div>
-                <span class="product-price">₹200</span>
-              </div>
-              <button class="btn btn-small btn-add-cart" data-name="Watermelon Seeds" data-emoji="🍉">+ Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal reveal-delay-2" data-price-per-kg="1000">
-          <div class="product-badge badge-new">Seeds</div>
-          <div class="product-emoji">🍈</div>
-          <div class="product-info">
-            <span class="product-tag">Superfood Seed</span>
-            <h3 class="product-name">Muskmelon Seeds</h3>
-            <p class="product-desc">Delicate, mild-flavoured seeds rich in antioxidants. The underrated gem of the nut bowl.</p>
-            <div class="weight-selector">
-              <button class="weight-btn active" data-weight="200">200g</button>
-              <button class="weight-btn" data-weight="500">500g</button>
-              <button class="weight-btn" data-weight="1000">1kg</button>
-            </div>
-            <div class="product-footer">
-              <div class="price-stack">
-                <div class="price-mrp-row">
-                  <span class="product-price-original">₹240</span>
-                  <span class="discount-pill">17% off</span>
-                </div>
-                <span class="product-price">₹200</span>
-              </div>
-              <button class="btn btn-small btn-add-cart" data-name="Muskmelon Seeds" data-emoji="🍈">+ Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal" data-price-per-kg="900">
-          <div class="product-badge badge-new">Seeds</div>
-          <div class="product-emoji">🌑</div>
-          <div class="product-info">
-            <span class="product-tag">Superfood Seed</span>
-            <h3 class="product-name">Chia Seeds</h3>
-            <p class="product-desc">Tiny but mighty — packed with omega-3 fatty acids, fibre and calcium. Stir into smoothies, yoghurt or water for an effortless nutrition boost.</p>
-            <div class="weight-selector">
-              <button class="weight-btn active" data-weight="200">200g</button>
-              <button class="weight-btn" data-weight="500">500g</button>
-              <button class="weight-btn" data-weight="1000">1kg</button>
-            </div>
-            <div class="product-footer">
-              <div class="price-stack">
-                <div class="price-mrp-row">
-                  <span class="product-price-original">₹220</span>
-                  <span class="discount-pill">18% off</span>
-                </div>
-                <span class="product-price">₹180</span>
-              </div>
-              <button class="btn btn-small btn-add-cart" data-name="Chia Seeds" data-emoji="🌑">+ Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal reveal-delay-1" data-price-per-kg="400">
-          <div class="product-badge badge-new">Seeds</div>
-          <div class="product-emoji">🌾</div>
-          <div class="product-info">
-            <span class="product-tag">Superfood Seed</span>
-            <h3 class="product-name">Flax Seeds</h3>
-            <p class="product-desc">Rich in lignans, omega-3 and dietary fibre. Add to your morning routine for a heart-healthy, gut-friendly kick every single day.</p>
-            <div class="weight-selector">
-              <button class="weight-btn active" data-weight="200">200g</button>
-              <button class="weight-btn" data-weight="500">500g</button>
-              <button class="weight-btn" data-weight="1000">1kg</button>
-            </div>
-            <div class="product-footer">
-              <div class="price-stack">
-                <div class="price-mrp-row">
-                  <span class="product-price-original">₹100</span>
-                  <span class="discount-pill">20% off</span>
-                </div>
-                <span class="product-price">₹80</span>
-              </div>
-              <button class="btn btn-small btn-add-cart" data-name="Flax Seeds" data-emoji="🌾">+ Add to Cart</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Combo cards are injected here by combos.json via main.js -->
+      <div id="productsGrid" class="products-grid">
         <div id="combos-anchor"></div>
       </div>
 
       <div class="products-note reveal">
-        <p>🛒 Currently taking orders via DM &amp; WhatsApp · Shipping across India</p>
+        <p id="productsNote">🛒 Currently taking orders via DM &amp; WhatsApp · Shipping across India</p>
       </div>
     </div>
   </section>
@@ -392,15 +169,15 @@
     <div class="container">
       <div class="contact-inner">
         <div class="contact-left reveal">
-          <span class="section-tag">get in touch</span>
-          <h2 class="section-title">Let's talk<br /><em>snacks.</em></h2>
-          <p class="section-desc">Questions, orders, wholesale inquiries — slide in. We don't bite. (Our nuts do, though.)</p>
+          <span id="contactTag" class="section-tag">get in touch</span>
+          <h2 id="contactTitle" class="section-title">Let's talk<br /><em>snacks.</em></h2>
+          <p id="contactDesc" class="section-desc">Questions, orders, wholesale inquiries — slide in. We don't bite. (Our nuts do, though.)</p>
           <div class="contact-socials">
-            <a href="https://instagram.com/thenutsbowl" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+            <a id="contactInstagramSocial" href="https://instagram.com/thenutsbowl" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               Instagram
             </a>
-            <a href="https://wa.me/9870505923" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
+            <a id="contactWhatsappSocial" href="https://wa.me/9870505923" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.122 1.527 5.855L.057 23.25a.75.75 0 0 0 .918.918l5.395-1.47A11.952 11.952 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.924 0-3.74-.518-5.3-1.424l-.38-.224-3.938 1.073 1.073-3.938-.224-.38A9.957 9.957 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
               WhatsApp
             </a>
@@ -409,13 +186,13 @@
 
         <div class="contact-right reveal reveal-delay-1">
           <div class="contact-cta-group">
-            <a href="https://wa.me/9870505923" target="_blank" rel="noopener noreferrer" class="contact-cta-btn contact-cta-whatsapp">
+            <a id="contactWhatsappCta" href="https://wa.me/9870505923" target="_blank" rel="noopener noreferrer" class="contact-cta-btn contact-cta-whatsapp">
               <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.122 1.527 5.855L.057 23.25a.75.75 0 0 0 .918.918l5.395-1.47A11.952 11.952 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.924 0-3.74-.518-5.3-1.424l-.38-.224-3.938 1.073 1.073-3.938-.224-.38A9.957 9.957 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-              Chat on WhatsApp
+              <span>Chat on WhatsApp</span>
             </a>
-            <a href="https://instagram.com/thenutsbowl" target="_blank" rel="noopener noreferrer" class="contact-cta-btn contact-cta-instagram">
+            <a id="contactInstagramCta" href="https://instagram.com/thenutsbowl" target="_blank" rel="noopener noreferrer" class="contact-cta-btn contact-cta-instagram">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-              DM on Instagram
+              <span>DM on Instagram</span>
             </a>
           </div>
         </div>
