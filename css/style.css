@@ -969,9 +969,8 @@ textarea { resize: vertical; }
 .ingredient-name {
   font-size: 0.82rem;
   color: var(--text-dark);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .ingredient-weight {
@@ -991,6 +990,25 @@ textarea { resize: vertical; }
   font-size: 0.85rem;
   font-weight: 700;
   color: #16a34a;
+}
+
+@media (max-width: 480px) {
+  .ingredients-list {
+    grid-template-columns: 1fr;
+  }
+  .ingredients-header {
+    grid-template-columns: 1fr;
+  }
+  .ingredients-header > div:first-child {
+    border-right: none;
+    border-bottom: 1px solid #bbf7d0;
+  }
+  .ingredients-header > div:last-child {
+    display: none;
+  }
+  .ingredient-row:nth-child(odd) {
+    border-right: none;
+  }
 }
 
 /* Old table styles kept for fallback */
