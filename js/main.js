@@ -32,6 +32,43 @@
     applyTheme(next);
   });
 
+  // ── Offer Banner ─────────────────────────────────────────────
+  const offerBanner      = document.getElementById('offerBanner');
+  const offerTrack       = document.getElementById('offerTrack');
+  const offerBannerClose = document.getElementById('offerBannerClose');
+
+  fetch('js/content/banner.json')
+    .then(r => r.json())
+    .then(data => {
+      if (!data.enabled) return;
+      if (sessionStorage.getItem('bannerDismissed')) return;
+
+      // Build double-length ticker (seamless loop)
+      const msgs = [...data.messages, ...data.messages]
+        .map(m => `<span class="offer-banner-msg">${m}</span>`)
+        .join('');
+      offerTrack.innerHTML = msgs;
+
+      offerBanner.hidden = false;
+      // Slight delay so the CSS transition plays
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          offerBanner.classList.add('visible');
+          document.body.classList.add('banner-visible');
+        });
+      });
+    })
+    .catch(() => {}); // silently skip if banner.json missing
+
+  if (offerBannerClose) {
+    offerBannerClose.addEventListener('click', () => {
+      offerBanner.classList.remove('visible');
+      document.body.classList.remove('banner-visible');
+      sessionStorage.setItem('bannerDismissed', '1');
+      setTimeout(() => { offerBanner.hidden = true; }, 380);
+    });
+  }
+
   // ── Navbar: scroll state ──────────────────────────────────────
   const navbar = document.getElementById('navbar');
 

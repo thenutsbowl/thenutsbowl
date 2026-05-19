@@ -208,6 +208,82 @@ textarea { resize: vertical; }
   font-weight: 300;
 }
 
+/* ─── OFFER BANNER ───────────────────────────────────────────── */
+:root { --banner-h: 0px; }
+
+.offer-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  z-index: 1002;
+  background: var(--yellow);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transform: translateY(-100%);
+  transition: transform 0.35s var(--ease);
+}
+
+.offer-banner.visible { transform: translateY(0); }
+
+/* Scrolling ticker */
+.offer-banner-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  white-space: nowrap;
+  animation: bannerTicker 28s linear infinite;
+  padding-right: 2rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.offer-banner-track:hover { animation-play-state: paused; }
+
+@keyframes bannerTicker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.offer-banner-msg {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  padding: 0 3rem;
+}
+
+.offer-banner-msg::before {
+  content: '✦';
+  margin-right: 0.75rem;
+  opacity: 0.5;
+}
+
+.offer-banner-close {
+  flex-shrink: 0;
+  padding: 0 0.85rem;
+  height: 100%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  opacity: 0.6;
+  background: rgba(0,0,0,0.08);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  transition: opacity var(--transition), background var(--transition);
+  cursor: pointer;
+}
+
+.offer-banner-close:hover { opacity: 1; background: rgba(0,0,0,0.15); }
+
+/* Shift navbar and hero down when banner is visible */
+body.banner-visible .navbar      { top: 38px; }
+body.banner-visible .hero        { padding-top: calc(var(--section-pad) + 4rem + 38px); }
+body.banner-visible .mobile-overlay { top: 38px; }
+
 /* ─── NAVBAR ─────────────────────────────────────────────────── */
 .navbar {
   position: fixed;
@@ -1833,3 +1909,10 @@ textarea { resize: vertical; }
 [data-theme="genz"] ::-webkit-scrollbar-track { background: #1a1a1a; }
 [data-theme="genz"] ::-webkit-scrollbar-thumb { background: #FFD60A; }
 [data-theme="genz"] ::-webkit-scrollbar-thumb:hover { background: #00C896; }
+
+/* ── Gen-Z banner ────────────────────────────────────────────── */
+[data-theme="genz"] .offer-banner {
+  background: #FFD60A;
+}
+[data-theme="genz"] .offer-banner-msg  { color: #0c0c0c; }
+[data-theme="genz"] .offer-banner-close { color: #0c0c0c; border-left-color: rgba(0,0,0,0.15); }
