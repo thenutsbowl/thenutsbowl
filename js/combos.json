@@ -27,7 +27,7 @@
       { "emoji": "🍉", "name": "Watermelon Seeds", "weight": "150g" },
       { "emoji": "🍈", "name": "MuskMelon Seeds",  "weight": "150g" },
       { "emoji": "🎃", "name": "Pumpkin Seeds",    "weight": "200g" },
-      { "emoji": "🌑", "name": "Chia Seeds",       "weight": "150g" },
+      { "emoji": "𓇢", "name": "Chia Seeds",       "weight": "150g" },
       { "emoji": "🌻", "name": "Sunflower Seeds",  "weight": "200g" },
       { "emoji": "🌾", "name": "Flax Seeds",       "weight": "150g" }
     ],
@@ -45,7 +45,7 @@
     "ingredients": [
       { "emoji": "🍉", "name": "Watermelon Seeds", "weight": "50g" },
       { "emoji": "🎃", "name": "Pumpkin Seeds",    "weight": "50g" },
-      { "emoji": "🌑", "name": "Chia Seeds",       "weight": "50g" },
+      { "emoji": "𓇢", "name": "Chia Seeds",       "weight": "50g" },
       { "emoji": "🌾", "name": "Flax Seeds",       "weight": "50g" },
       { "emoji": "🌻", "name": "Sunflower Seeds",  "weight": "50g" },
       { "emoji": "🍈", "name": "MuskMelon Seeds",  "weight": "50g" }
@@ -69,7 +69,7 @@
       { "emoji": "🍉", "name": "Watermelon Seeds", "weight": "60g" },
       { "emoji": "🌻", "name": "Sunflower Seeds",  "weight": "60g" },
       { "emoji": "🌾", "name": "Flax Seeds",       "weight": "50g" },
-      { "emoji": "🌑", "name": "Chia Seeds",       "weight": "50g" },
+      { "emoji": "𓇢", "name": "Chia Seeds",       "weight": "50g" },
       { "emoji": "🍈", "name": "Muskmelon Seeds",  "weight": "50g" }
     ],
     "totalWeight": "550g",
@@ -107,7 +107,7 @@
       { "emoji": "🫐", "name": "Blueberry",        "weight": "20g" },
       { "emoji": "🍇", "name": "Black Raisins",    "weight": "40g" },
       { "emoji": "🎃", "name": "Pumpkin Seeds",    "weight": "40g" },
-      { "emoji": "🌑", "name": "Chia Seeds",       "weight": "25g" },
+      { "emoji": "𓇢", "name": "Chia Seeds",       "weight": "25g" },
       { "emoji": "🌾", "name": "Flax Seeds",       "weight": "25g" },
       { "emoji": "🌻", "name": "Sunflower Seeds",  "weight": "35g" },
       { "emoji": "🍈", "name": "Muskmelon Seeds",  "weight": "25g" }

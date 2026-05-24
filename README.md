@@ -46,7 +46,7 @@ Your site will be live at: `https://yashmodi.github.io/thenutsbowl`
 
 ---
 
-## 🥜 Adding Your Logo
+## 🍇 Adding Your Logo
 
 1. Place your logo file at: `assets/logo.png`
    - Recommended: PNG with transparent background
@@ -85,4 +85,4 @@ Edit `css/style.css` — find the `:root` block at the top:
 
 ---
 
-Made with 🥜 by The Nut Bowl
+Made with 🍇 by The Nut Bowl
