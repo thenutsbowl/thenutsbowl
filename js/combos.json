@@ -53,6 +53,68 @@
     "totalWeight": "300g",
     "mrp": 549,
     "price": 450
+  },
+  {
+    "name": "Premium Breakfast SuperMix",
+    "tag": "Seeds + Berries · Complete Breakfast",
+    "badge": "🏆 Premium",
+    "badgeClass": "badge-bestseller",
+    "emoji": "🥣",
+    "desc": "The ultimate breakfast upgrade — a luxurious blend of antioxidant-rich berries, protein-packed seeds and omega-3 superseeds. Start your mornings with this nutrient-dense, premium superfood mix.",
+    "ingredients": [
+      { "emoji": "🍒", "name": "Cranberry",        "weight": "80g" },
+      { "emoji": "🫐", "name": "Blueberry",        "weight": "40g" },
+      { "emoji": "🍇", "name": "Black Raisins",    "weight": "80g" },
+      { "emoji": "🎃", "name": "Pumpkin Seeds",    "weight": "80g" },
+      { "emoji": "🍉", "name": "Watermelon Seeds", "weight": "60g" },
+      { "emoji": "🌻", "name": "Sunflower Seeds",  "weight": "60g" },
+      { "emoji": "🌾", "name": "Flax Seeds",       "weight": "50g" },
+      { "emoji": "🌑", "name": "Chia Seeds",       "weight": "50g" },
+      { "emoji": "🍈", "name": "Muskmelon Seeds",  "weight": "50g" }
+    ],
+    "totalWeight": "550g",
+    "mrp": 1299,
+    "price": 899
+  },
+  {
+    "name": "Premium Berry & Seed Crunch Mix",
+    "tag": "Berries + Seeds · Crunchy Snack",
+    "badge": "🍇 Crunch",
+    "badgeClass": "badge-new",
+    "emoji": "🥜",
+    "desc": "A crunchy, flavourful mix of tangy berries and nutrient-rich seeds — perfect for on-the-go snacking or topping your smoothie bowls and salads.",
+    "ingredients": [
+      { "emoji": "🍒", "name": "Cranberry",        "weight": "50g" },
+      { "emoji": "🍇", "name": "Black Raisins",    "weight": "50g" },
+      { "emoji": "🍉", "name": "Watermelon Seeds", "weight": "40g" },
+      { "emoji": "🍈", "name": "Muskmelon Seeds",  "weight": "35g" },
+      { "emoji": "🌻", "name": "Sunflower Seeds",  "weight": "45g" },
+      { "emoji": "🌾", "name": "Flax Seeds",       "weight": "30g" }
+    ],
+    "totalWeight": "250g",
+    "mrp": 520,
+    "price": 449
+  },
+  {
+    "name": "Berry Breakfast SuperMix",
+    "tag": "Berries + Seeds · Morning Boost",
+    "badge": "🌅 Breakfast",
+    "badgeClass": "badge-new",
+    "emoji": "🥣",
+    "desc": "A perfectly balanced breakfast blend of antioxidant berries and 5 superseeds — packed with protein, omega-3 and fibre to fuel your mornings right.",
+    "ingredients": [
+      { "emoji": "🍒", "name": "Cranberry",        "weight": "40g" },
+      { "emoji": "🫐", "name": "Blueberry",        "weight": "20g" },
+      { "emoji": "🍇", "name": "Black Raisins",    "weight": "40g" },
+      { "emoji": "🎃", "name": "Pumpkin Seeds",    "weight": "40g" },
+      { "emoji": "🌑", "name": "Chia Seeds",       "weight": "25g" },
+      { "emoji": "🌾", "name": "Flax Seeds",       "weight": "25g" },
+      { "emoji": "🌻", "name": "Sunflower Seeds",  "weight": "35g" },
+      { "emoji": "🍈", "name": "Muskmelon Seeds",  "weight": "25g" }
+    ],
+    "totalWeight": "250g",
+    "mrp": 520,
+    "price": 449
   }
 ]
 

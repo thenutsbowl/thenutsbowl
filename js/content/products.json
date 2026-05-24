@@ -4,13 +4,15 @@
   "description": "Premium nuts &amp; seeds. Real ingredients, bold flavour.",
   "note": "🛒 Currently taking orders via DM &amp; WhatsApp · Shipping across India",
   "products": [
-    { "badge": "Popular", "badgeClass": "", "emoji": "🌰", "tag": "Classic Nut", "name": "Almonds", "description": "Premium whole almonds — crunchy, nutrient-rich and perfect for snacking or adding to your bowl.", "weights": [200, 500, 1000] },
-    { "badge": "Popular", "badgeClass": "", "emoji": "🥜", "tag": "Classic Nut", "name": "Cashews", "description": "Creamy, buttery cashews that hit different. Rich in healthy fats and absolutely irresistible.", "weights": [200, 500, 1000] },
     { "badge": "Seeds", "badgeClass": "badge-new", "emoji": "🎃", "tag": "Superfood Seed", "name": "Pumpkin Seeds", "description": "Packed with zinc &amp; magnesium. Earthy, nutty flavour that makes every bowl feel complete.", "weights": [200, 500, 1000] },
     { "badge": "Seeds", "badgeClass": "badge-new", "emoji": "🌻", "tag": "Superfood Seed", "name": "Sunflower Seeds", "description": "Light, crunchy &amp; loaded with vitamin E. A wholesome everyday snack your body will thank you for.", "weights": [200, 500, 1000] },
     { "badge": "Seeds", "badgeClass": "badge-new", "emoji": "🍉", "tag": "Superfood Seed", "name": "Watermelon Seeds", "description": "High-protein, crispy seeds that surprise you every time. A bold snack from an unexpected source.", "weights": [200, 500, 1000] },
     { "badge": "Seeds", "badgeClass": "badge-new", "emoji": "🍈", "tag": "Superfood Seed", "name": "Muskmelon Seeds", "description": "Delicate, mild-flavoured seeds rich in antioxidants. The underrated gem of the nut bowl.", "weights": [200, 500, 1000] },
     { "badge": "Seeds", "badgeClass": "badge-new", "emoji": "🌑", "tag": "Superfood Seed", "name": "Chia Seeds", "description": "Tiny but mighty — packed with omega-3 fatty acids, fibre and calcium. Stir into smoothies, yoghurt or water for an effortless nutrition boost.", "weights": [200, 500, 1000] },
-    { "badge": "Seeds", "badgeClass": "badge-new", "emoji": "🌾", "tag": "Superfood Seed", "name": "Flax Seeds", "description": "Rich in lignans, omega-3 and dietary fibre. Add to your morning routine for a heart-healthy, gut-friendly kick every single day.", "weights": [200, 500, 1000] }
+    { "badge": "Seeds", "badgeClass": "badge-new", "emoji": "🌾", "tag": "Superfood Seed", "name": "Flax Seeds", "description": "Rich in lignans, omega-3 and dietary fibre. Add to your morning routine for a heart-healthy, gut-friendly kick every single day.", "weights": [200, 500, 1000] },
+    { "badge": "Beans", "badgeClass": "badge-new", "emoji": "🫛", "tag": "Superfood Bean", "name": "Edamame", "description": "Young soybeans loaded with plant protein, fibre and essential amino acids. A satisfying, crunchy snack that fuels you right.", "weights": [200, 500, 1000] },
+    { "badge": "Dried Fruit", "badgeClass": "badge-new", "emoji": "🍇", "tag": "Dried Fruit", "name": "Black Raisins", "description": "Naturally sweet, iron-rich dried grapes bursting with antioxidants. A timeless superfruit for everyday energy.", "weights": [200, 500, 1000] },
+    { "badge": "Dried Fruit", "badgeClass": "badge-new", "emoji": "🍒", "tag": "Dried Fruit", "name": "Cranberry", "description": "Tart, tangy and loaded with vitamin C. Premium dried cranberries that add a burst of flavour to any mix or snack.", "weights": [200, 500, 1000] },
+    { "badge": "Dried Fruit", "badgeClass": "badge-new", "emoji": "🫐", "tag": "Dried Fruit", "name": "Blueberry", "description": "Sweet, antioxidant-rich dried blueberries — a luxury superfruit packed with vitamins and bold berry flavour.", "weights": [200, 500, 1000] }
   ]
 }

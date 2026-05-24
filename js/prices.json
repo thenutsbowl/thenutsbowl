@@ -1,12 +1,13 @@
 [
-  { "name": "Almonds",          "pricePerKg": 1100, "mrpPerKg": 1200 },
-  { "name": "Cashews",          "pricePerKg": 1100, "mrpPerKg": 1200 },
   { "name": "Chia Seeds",       "pricePerKg": 400,  "mrpPerKg": 545 },
   { "name": "Flax Seeds",       "pricePerKg": 300,  "mrpPerKg": 400  },
   { "name": "Pumpkin Seeds",    "pricePerKg": 550,  "mrpPerKg": 700   },
   { "name": "Sunflower Seeds",  "pricePerKg": 400,  "mrpPerKg": 550  },
   { "name": "Watermelon Seeds", "pricePerKg": 1050, "mrpPerKg": 1249 },
   { "name": "Muskmelon Seeds",  "pricePerKg": 1000, "mrpPerKg": 1199 },
-  { "name": "DIY Seed Bowl",    "pricePerKg": 868,  "mrpPerKg": 965  }
+  { "name": "Edamame",          "pricePerKg": 1000,  "mrpPerKg": 1100 },
+  { "name": "Black Raisins",    "pricePerKg": 1000,  "mrpPerKg": 1350 },
+  { "name": "Cranberry",        "pricePerKg": 1000,  "mrpPerKg": 1300 },
+  { "name": "Blueberry",        "pricePerKg": 1699, "mrpPerKg": 2000 }
 ]
 
