@@ -3,108 +3,14 @@
    Mobile nav · Scroll reveal · Smooth interactions
 ═══════════════════════════════════════════════════════════════ */
 
-// ── Google Sheets live pricing ────────────────────────────────
-// Paste your Apps Script Web App URL below.
-// Sheet stays PRIVATE — loaded via JSONP, no CORS issues.
-//
-// Deploy steps (in Apps Script):
-//   Deploy → New Deployment → Web App
-//   Execute as: Me  |  Who has access: Anyone
-const SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbzn73cHp7kSgPXMxobbkw_rOo55Jp2IUpeUyQwuk-QSuO2NFSF6RCkBBmCyXwYU6vBF/exec';
-
-// JSONP loader — injects a <script> tag, bypasses CORS entirely
-function _jsonp(url) {
-  return new Promise((resolve, reject) => {
-    const cb   = '_gs_' + Math.random().toString(36).slice(2);
-    const el   = document.createElement('script');
-    const done = () => { delete window[cb]; el.remove(); };
-    const timer = setTimeout(() => { done(); reject(new Error('JSONP timeout – check Apps Script URL and deployment')); }, 10000);
-    window[cb] = data => {
-      clearTimeout(timer); done();
-      if (data && data.error) { reject(new Error('Apps Script error: ' + data.error)); return; }
-      resolve(data);
-    };
-    el.onerror = () => { clearTimeout(timer); done(); reject(new Error('JSONP script load failed – check URL: ' + url)); };
-    el.src = `${url}&callback=${cb}&t=${Date.now()}`;
-    console.log('[Sheets] Loading:', el.src);
-    document.head.appendChild(el);
-  });
-}
-
-// _loadSheetsData — fetches ALL data in a single Apps Script request.
-// Strategy: stale-while-revalidate
-//   • Cache hit  → return instantly, refresh in background if > 1 day old
-//   • No cache   → show skeleton cards, fetch, then render
-// Returns { products, prices, combos } — empty arrays on failure.
-function _loadSheetsData() {
-  if (!SHEETS_API_URL) {
-    console.warn('[Sheets] SHEETS_API_URL not set — products, prices and combos will not load.');
-    return Promise.resolve({ products: [], prices: [], combos: [] });
-  }
-
-  const CACHE_KEY  = 'tnb_sheets_cache';
-  const REFRESH_MS = 1 * 24 * 60 * 60 * 1000; // 1 day
-
-  let cached = null;
-  try { cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null'); } catch (_) {}
-
-  function parseResponse(d) {
-    const products = Array.isArray(d.products) ? d.products : [];
-    const prices   = Array.isArray(d.prices)   ? d.prices   : [];
-    const combos   = Array.isArray(d.combos)   ? d.combos   : [];
-    if (d.combos && d.combos.error) console.warn('[Sheets] combos error:', d.combos.error);
-    console.log(`[Sheets] ✅ products:${products.length}  prices:${prices.length}  combos:${combos.length}`);
-    return { products, prices, combos };
-  }
-
-  function fetchFresh() {
-    return _jsonp(`${SHEETS_API_URL}?sheet=all`)
-      .then(d => {
-        const data = parseResponse(d);
-        try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data })); } catch (_) {}
-        return data;
-      });
-  }
-
-  function showSkeletons(count) {
-    const anchor = document.getElementById('combos-anchor');
-    if (!anchor) return;
-    const html = Array.from({ length: count }, () => `
-      <div class="skeleton-card">
-        <div class="skeleton-line sk-emoji"></div>
-        <div class="skeleton-line sk-title"></div>
-        <div class="skeleton-line sk-desc"></div>
-        <div class="skeleton-line sk-desc2"></div>
-        <div class="skeleton-line sk-price"></div>
-      </div>`).join('');
-    anchor.insertAdjacentHTML('beforebegin', html);
-  }
-
-  function clearSkeletons() {
-    document.querySelectorAll('.skeleton-card').forEach(el => el.remove());
-  }
-
-  if (cached) {
-    const age = Date.now() - cached.ts;
-    if (age > REFRESH_MS) {
-      // Stale — serve immediately, refresh silently in background
-      console.log('[Sheets] Cache stale — serving now, refreshing in background…');
-      fetchFresh().catch(err => console.warn('[Sheets] Background refresh failed:', err.message));
-    } else {
-      console.log(`[Sheets] Serving from cache (${Math.round(age / 3600000)}h old)`);
-    }
-    return Promise.resolve(cached.data);
-  }
-
-  // No cache — first ever visit: show skeletons while loading
-  showSkeletons(6);
-  return fetchFresh()
-    .then(data => { clearSkeletons(); return data; })
-    .catch(err => {
-      clearSkeletons();
-      console.warn('[Sheets] Failed (no cache):', err.message);
-      return { products: [], prices: [], combos: [] };
-    });
+// _loadData — loads products/prices/combos from static JSON files.
+// To update data: edit js/products.json, js/prices.json, or js/combos.json directly.
+function _loadData() {
+  return Promise.all([
+    fetch('js/products.json').then(r => r.json()).catch(() => []),
+    fetch('js/prices.json').then(r => r.json()).catch(() => []),
+    fetch('js/combos.json').then(r => r.json()).catch(() => []),
+  ]).then(([products, prices, combos]) => ({ products, prices, combos }));
 }
 
 (function () {
@@ -518,7 +424,7 @@ function _loadSheetsData() {
     applyAbout(about);
     applyContact(contact);
 
-    return _loadSheetsData()
+    return _loadData()
       .then(({ products, prices, combos }) => {
         productsContent.products = products;
         applyProducts(productsContent);
