@@ -204,7 +204,7 @@ function _loadData() {
   function calcPrice(card, weight) {
     const perKg    = Number(card.dataset.pricePerKg);
     const discount = Number(card.dataset.discount || 0);
-    const raw = Math.round(perKg * weight / 1000);
+    const raw = Math.round(perKg * weight / 1000) + (weight === 200 ? 12 : 0);
     return Math.round(raw * (1 - discount / 100));
   }
 
@@ -355,7 +355,9 @@ function _loadData() {
         }
         const pillEl = card.querySelector('.discount-pill');
         if (pillEl && entry.mrpPerKg) {
-          const pct = Math.round((1 - entry.pricePerKg / entry.mrpPerKg) * 100);
+          const mrpPrice = Math.round(entry.mrpPerKg * weight / 1000);
+          const sellPrice = calcPrice(card, weight);
+          const pct = Math.round((1 - sellPrice / mrpPrice) * 100);
           pillEl.textContent = `${pct}% off`;
         }
       }
@@ -591,6 +593,14 @@ function _loadData() {
     const origEl = card.querySelector('.product-price-original');
     if (origEl && card.dataset.mrpPerKg) {
       origEl.textContent = `₹${Math.round(Number(card.dataset.mrpPerKg) * weight / 1000)}`;
+    }
+
+    const pillEl = card.querySelector('.discount-pill');
+    if (pillEl && card.dataset.mrpPerKg) {
+      const mrpPrice  = Math.round(Number(card.dataset.mrpPerKg) * weight / 1000);
+      const sellPrice = calcPrice(card, weight);
+      const pct = Math.round((1 - sellPrice / mrpPrice) * 100);
+      pillEl.textContent = `${pct}% off`;
     }
   });
 

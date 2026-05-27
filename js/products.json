@@ -6,7 +6,7 @@
     "emoji": "𓇢",
     "tag": "Omega-3 · Fibre Rich",
     "description": "Tiny but mighty — packed with omega-3, calcium and fibre. Add to smoothies, yogurt or just snack on them.",
-    "weights": [100, 200, 500, 1000]
+    "weights": [ 200, 500, 1000]
   },
   {
     "name": "Flax Seeds",
@@ -15,7 +15,7 @@
     "emoji": "🌾",
     "tag": "Omega-3 · Digestive Health",
     "description": "A daily wellness staple — rich in lignans, omega-3 fatty acids and dietary fibre. Great for digestion.",
-    "weights": [100, 200, 500, 1000]
+    "weights": [ 200, 500, 1000]
   },
   {
     "name": "Pumpkin Seeds",
@@ -24,7 +24,7 @@
     "emoji": "🎃",
     "tag": "Zinc · Magnesium · Protein",
     "description": "Crunchy, nutty and ridiculously good for you. High in zinc, magnesium and plant protein.",
-    "weights": [100, 200, 500, 1000]
+    "weights": [ 200, 500, 1000]
   },
   {
     "name": "Sunflower Seeds",
@@ -33,7 +33,7 @@
     "emoji": "🌻",
     "tag": "Vitamin E · Heart Healthy",
     "description": "Light, crunchy and loaded with Vitamin E and healthy fats. The perfect on-the-go snack.",
-    "weights": [100, 200, 500, 1000]
+    "weights": [ 200, 500, 1000]
   },
   {
     "name": "Watermelon Seeds",
@@ -42,7 +42,7 @@
     "emoji": "🍉",
     "tag": "Protein · Iron Rich",
     "description": "Don't spit them out — eat them! High in protein, iron and magnesium. A surprisingly powerful seed.",
-    "weights": [100, 200, 500, 1000]
+    "weights": [ 200, 500, 1000]
   },
   {
     "name": "Muskmelon Seeds",
@@ -51,7 +51,7 @@
     "emoji": "🍈",
     "tag": "Antioxidants · Immunity",
     "description": "Mild, creamy and nutrient-dense. Rich in antioxidants and immunity-boosting vitamins.",
-    "weights": [100, 200, 500, 1000]
+    "weights": [ 200, 500, 1000]
   },
   {
     "name": "Edamame",
@@ -60,7 +60,7 @@
     "emoji": "🫛",
     "tag": "High Protein · Low Carb",
     "description": "Young soybeans roasted to perfection — a satisfying, high-protein snack that keeps you full longer.",
-    "weights": [100, 200, 500]
+    "weights": [200, 500]
   },
   {
     "name": "Black Raisins",
@@ -69,7 +69,7 @@
     "emoji": "🍇",
     "tag": "Iron · Antioxidants",
     "description": "Naturally sweet and iron-rich. Great for energy, skin health and keeping mid-day cravings in check.",
-    "weights": [100, 200, 500, 1000]
+    "weights": [200, 500, 1000]
   },
   {
     "name": "Cranberry",
@@ -78,7 +78,7 @@
     "emoji": "🍒",
     "tag": "Antioxidants · Vitamin C",
     "description": "Tart, chewy and packed with antioxidants. Brilliant in trail mixes, oatmeal or straight from the bag.",
-    "weights": [100, 200, 500]
+    "weights": [200, 500, 1000]
   },
   {
     "name": "Blueberry",
@@ -87,6 +87,6 @@
     "emoji": "🫐",
     "tag": "Brain Health · Antioxidants",
     "description": "Nature's brain food. Bursting with antioxidants and phytoflavonoids — your daily dose of wellness.",
-    "weights": [100, 200, 500]
+    "weights": [200, 500]
   }
 ]
