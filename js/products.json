@@ -67,7 +67,6 @@
     "badge": "🍇 Natural Sweet",
     "badgeClass": "badge-new",
     "emoji": "🍇",
-    "image": "assets/images/black_resins.png",
     "tag": "Iron · Antioxidants",
     "description": "Naturally sweet and iron-rich. Great for energy, skin health and keeping mid-day cravings in check.",
     "weights": [100, 200, 500, 1000]
@@ -77,7 +76,6 @@
     "badge": "🍒 Tangy & Tasty",
     "badgeClass": "badge-bestseller",
     "emoji": "🍒",
-    "image": "assets/images/cranberry.png",
     "tag": "Antioxidants · Vitamin C",
     "description": "Tart, chewy and packed with antioxidants. Brilliant in trail mixes, oatmeal or straight from the bag.",
     "weights": [100, 200, 500]
@@ -87,7 +85,6 @@
     "badge": "🫐 Superfruit",
     "badgeClass": "badge-bestseller",
     "emoji": "🫐",
-    "image": "assets/images/blueberry.png",
     "tag": "Brain Health · Antioxidants",
     "description": "Nature's brain food. Bursting with antioxidants and phytoflavonoids — your daily dose of wellness.",
     "weights": [100, 200, 500]
