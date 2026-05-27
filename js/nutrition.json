@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Chia Seeds",
+    "emoji": "𓇢",
+    "per100g": { "protein": 17, "calories": 486, "carbs": 42, "fat": 31, "fibre": 34 }
+  },
+  {
+    "name": "Flax Seeds",
+    "emoji": "🌾",
+    "per100g": { "protein": 18, "calories": 534, "carbs": 29, "fat": 42, "fibre": 27 }
+  },
+  {
+    "name": "Pumpkin Seeds",
+    "emoji": "🎃",
+    "per100g": { "protein": 30, "calories": 559, "carbs": 11, "fat": 49, "fibre": 6 }
+  },
+  {
+    "name": "Sunflower Seeds",
+    "emoji": "🌻",
+    "per100g": { "protein": 21, "calories": 584, "carbs": 20, "fat": 51, "fibre": 9 }
+  },
+  {
+    "name": "Watermelon Seeds",
+    "emoji": "🍉",
+    "per100g": { "protein": 28, "calories": 557, "carbs": 15, "fat": 47, "fibre": 2 }
+  },
+  {
+    "name": "Muskmelon Seeds",
+    "emoji": "🍈",
+    "per100g": { "protein": 21, "calories": 560, "carbs": 18, "fat": 45, "fibre": 3 }
+  },
+  {
+    "name": "Edamame",
+    "emoji": "🫛",
+    "per100g": { "protein": 13, "calories": 121, "carbs": 9, "fat": 5, "fibre": 5 }
+  },
+  {
+    "name": "Black Raisins",
+    "emoji": "🍇",
+    "per100g": { "protein": 3, "calories": 299, "carbs": 79, "fat": 1, "fibre": 4 }
+  },
+  {
+    "name": "Cranberry",
+    "emoji": "🍒",
+    "per100g": { "protein": 0, "calories": 308, "carbs": 82, "fat": 1, "fibre": 5 }
+  },
+  {
+    "name": "Blueberry",
+    "emoji": "🫐",
+    "per100g": { "protein": 1, "calories": 317, "carbs": 84, "fat": 1, "fibre": 3 }
+  }
+]

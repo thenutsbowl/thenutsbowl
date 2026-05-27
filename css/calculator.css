@@ -1,0 +1,340 @@
+/* ═══════════════════════════════════════════════════════════════
+   THE NUTS BOWL — calculator.css
+   Styles for the Nutrition Calculator page
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Hero ──────────────────────────────────────────────────── */
+.calc-hero {
+  padding: 8rem 0 3rem;
+  text-align: center;
+}
+.calc-hero .section-title { margin-top: 0.5rem; }
+.calc-hero small {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  letter-spacing: 0.02em;
+}
+
+/* ── Sections ─────────────────────────────────────────────── */
+.calc-section     { padding: 3rem 0 5rem; }
+.calc-section-alt { background: var(--bg-alt, rgba(0,0,0,0.03)); }
+
+/* ══════════════════════════════════════════════════════════════
+   TOTALS PANEL — full-width card pinned at top of the section
+══════════════════════════════════════════════════════════════ */
+.mix-totals {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border, rgba(0,0,0,0.08));
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 72px;
+  z-index: 10;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Top row: goal input + progress bar side by side */
+.mix-totals-top {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Bottom row: macros spread across full width */
+.mix-totals-bottom {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-top: 1px solid var(--border, rgba(0,0,0,0.07));
+  padding-top: 1rem;
+}
+.mix-totals-bottom .mix-macro-item {
+  flex: 1;
+  border-right: 1px solid var(--border, rgba(0,0,0,0.07));
+  padding: 0 1.25rem;
+}
+.mix-totals-bottom .mix-macro-item:first-child { padding-left: 0; }
+.mix-totals-bottom .mix-reset-btn { margin-left: auto; flex-shrink: 0; }
+
+/* ── Goal input row ────────────────────────────────────────── */
+.mix-goal-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+}
+.mix-goal-row label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+}
+.target-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--bg, #f5f5f5);
+  border-radius: 10px;
+  padding: 0.4rem 0.75rem;
+}
+.target-input {
+  width: 52px;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text, #111);
+  text-align: center;
+  outline: none;
+  -moz-appearance: textfield;
+}
+.target-input::-webkit-outer-spin-button,
+.target-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.target-unit { font-size: 0.82rem; font-weight: 600; opacity: 0.5; }
+
+/* ── Protein progress bar ──────────────────────────────────── */
+.macro-progress-wrap { display: flex; flex-direction: column; gap: 0.35rem; }
+.macro-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.macro-progress-track {
+  height: 8px;
+  background: var(--border, rgba(0,0,0,0.1));
+  border-radius: 99px;
+  overflow: hidden;
+}
+.macro-progress-fill {
+  height: 100%;
+  background: var(--accent, #2d6a4f);
+  border-radius: 99px;
+  transition: width 0.3s ease;
+  max-width: 100%;
+}
+.macro-progress-fill.over-goal { background: #e76f51; }
+.macro-progress-goal { font-size: 0.68rem; opacity: 0.45; text-align: right; }
+
+/* ── Macro items ───────────────────────────────────────────── */
+.mix-macro-item { display: flex; flex-direction: column; gap: 0.1rem; }
+.mix-macro-value { font-size: 1.4rem; font-weight: 800; line-height: 1.1; }
+.mix-macro-label {
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.45;
+}
+
+/* ── Reset button ──────────────────────────────────────────── */
+.mix-reset-btn {
+  font-size: 0.78rem;
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--border, rgba(0,0,0,0.15));
+  background: transparent;
+  cursor: pointer;
+  color: var(--text, #111);
+  transition: background 0.15s;
+}
+.mix-reset-btn:hover { background: var(--border, rgba(0,0,0,0.07)); }
+
+/* ══════════════════════════════════════════════════════════════
+   PRODUCT SLIDERS — 2-column grid on desktop
+══════════════════════════════════════════════════════════════ */
+.mix-products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.mix-product-row {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border, rgba(0,0,0,0.08));
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.mix-product-emoji { font-size: 1.5rem; line-height: 1; text-align: center; }
+.mix-product-info  { display: flex; flex-direction: column; gap: 0.35rem; }
+.mix-product-name  { font-size: 0.9rem; font-weight: 700; }
+
+.mix-slider {
+  width: 100%;
+  accent-color: var(--accent, #2d6a4f);
+  cursor: pointer;
+}
+
+.mix-product-value-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 68px;
+  justify-content: flex-end;
+}
+.mix-gram-input {
+  width: 48px;
+  border: 1px solid var(--border, rgba(0,0,0,0.1));
+  border-radius: 8px;
+  background: var(--bg, #f5f5f5);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text, #111);
+  text-align: center;
+  padding: 0.25rem 0.3rem;
+  outline: none;
+  -moz-appearance: textfield;
+}
+.mix-gram-input::-webkit-outer-spin-button,
+.mix-gram-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.mix-gram-unit { font-size: 0.72rem; opacity: 0.5; }
+
+/* Macro mini row inside product card */
+.mix-product-macros {
+  grid-column: 2 / -1;
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+.mix-pmacro { font-size: 0.7rem; opacity: 0.55; }
+
+/* ── Fix last macro item border on desktop ─────────────────── */
+.mix-totals-bottom .mix-macro-item:last-of-type { border-right: none; }
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET  (≤860px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 860px) {
+  .mix-products { grid-template-columns: 1fr; }
+  .mix-totals-top { grid-template-columns: 1fr; gap: 1rem; }
+  .mix-totals-bottom .mix-macro-item { padding: 0 0.75rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE  (≤600px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+
+  /* ── Hero tighter on phones ──────────────────────────────── */
+  .calc-hero { padding: 5rem 0 1.75rem; }
+
+  /* ── Section ─────────────────────────────────────────────── */
+  .calc-section { padding: 1.25rem 0 0; }
+
+  /* ── Bottom sheet panel ──────────────────────────────────── */
+  .mix-totals {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    top: auto;
+    border-radius: 18px 18px 0 0;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    box-shadow: 0 -6px 40px rgba(0,0,0,0.14);
+    z-index: 100;
+    padding: 0 1.1rem calc(0.85rem + env(safe-area-inset-bottom));
+    gap: 0.5rem;
+    background: var(--card-bg, #fff);
+  }
+
+  /* Drag-handle indicator */
+  .mix-totals::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 4px;
+    border-radius: 99px;
+    background: var(--border, rgba(0,0,0,0.15));
+    margin: 0.6rem auto 0.2rem;
+  }
+
+  /* Goal row + progress bar side by side */
+  .mix-totals-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    grid-template-columns: unset;
+  }
+  .mix-goal-row { flex-shrink: 0; gap: 0.5rem; }
+  .mix-goal-row label { display: none; }
+  .target-input-wrap { padding: 0.35rem 0.6rem; }
+  .target-input { width: 44px; font-size: 0.95rem; }
+  .macro-progress-wrap { flex: 1; min-width: 0; }
+
+  /* 3-column macro grid */
+  .mix-totals-bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border, rgba(0,0,0,0.07));
+    gap: 0.3rem 0;
+  }
+  .mix-totals-bottom .mix-macro-item {
+    border-right: none;
+    padding: 0 0.4rem;
+  }
+  .mix-totals-bottom .mix-macro-item:first-child { padding-left: 0; }
+  .mix-totals-bottom .mix-reset-btn {
+    grid-column: 3;
+    grid-row: 2;
+    margin: 0;
+    align-self: center;
+    justify-self: end;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.65rem;
+  }
+  .mix-macro-value { font-size: 1rem; }
+  .mix-macro-label { font-size: 0.58rem; }
+
+  /* ── Product slider cards ────────────────────────────────── */
+  .mix-products {
+    padding-bottom: 240px;
+    gap: 0.65rem;
+  }
+
+  .mix-product-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .mix-product-emoji { font-size: 1.6rem; flex-shrink: 0; }
+
+  .mix-product-info { flex: 1; min-width: 0; gap: 0.25rem; }
+  .mix-product-name { font-size: 0.88rem; }
+
+  /* Slider full-width inside info block */
+  .mix-slider { height: 20px; margin-top: 0.1rem; }
+
+  .mix-product-value-wrap { flex-shrink: 0; min-width: 56px; }
+  .mix-gram-input { width: 44px; font-size: 0.88rem; }
+
+  /* Macro mini tags — pill style */
+  .mix-product-macros { gap: 0.4rem; }
+  .mix-pmacro {
+    font-size: 0.65rem;
+    background: var(--bg-alt, rgba(0,0,0,0.04));
+    border-radius: 20px;
+    padding: 0.1rem 0.45rem;
+    opacity: 1;
+  }
+
+  .footer { display: none; }
+}
+
+

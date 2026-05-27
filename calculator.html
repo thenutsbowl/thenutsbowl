@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── Google Search Console verification ───────────────────── -->
+  <meta name="google-site-verification" content="Z0WeQghRNJafV9fuHbbRIlqWVJzhFvjrggeVqKe2DdU" />
+
+  <!-- ── Primary SEO ──────────────────────────────────────────── -->
+  <title>Protein &amp; Nutrition Calculator — The Nuts Bowl | Build Your Daily Seed Mix</title>
+  <meta name="description" content="Free protein & nutrition calculator for seeds and nuts. Set your daily protein goal, add products and instantly see protein, calories, carbs, fat and fibre. Powered by The Nuts Bowl." />
+  <meta name="keywords" content="protein calculator, nutrition calculator, seed mix calculator, daily protein goal, chia seeds nutrition, pumpkin seeds protein, flax seeds calories, sunflower seeds nutrition, healthy seed mix, FSSAI nutrition, the nuts bowl calculator" />
+  <meta name="author" content="The Nuts Bowl" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://thenutsbowl.com/calculator.html" />
+
+  <!-- ── Open Graph (Facebook / WhatsApp) ────────────────────── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="The Nuts Bowl" />
+  <meta property="og:title" content="Protein & Nutrition Calculator — The Nuts Bowl" />
+  <meta property="og:description" content="Set your daily protein goal, dial in grams for each seed or nut, and get real-time macros. Free tool by The Nuts Bowl." />
+  <meta property="og:image" content="https://thenutsbowl.com/assets/images/brand_logo.png" />
+  <meta property="og:image:alt" content="The Nuts Bowl Nutrition Calculator" />
+  <meta property="og:url" content="https://thenutsbowl.com/calculator.html" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- ── Twitter Card ─────────────────────────────────────────── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Protein & Nutrition Calculator — The Nuts Bowl" />
+  <meta name="twitter:description" content="Build your perfect seed mix. Set a protein goal, adjust grams, watch macros update live." />
+  <meta name="twitter:image" content="https://thenutsbowl.com/assets/images/brand_logo.png" />
+
+  <!-- ── JSON-LD Structured Data ──────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Protein & Nutrition Mix Calculator",
+    "url": "https://thenutsbowl.com/calculator.html",
+    "description": "A free nutrition calculator to build your daily seed and nut mix. Track protein, calories, carbs, fat and fibre per 100g as per FSSAI standards.",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "The Nuts Bowl",
+      "url": "https://thenutsbowl.com"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://thenutsbowl.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Nutrition Calculator",
+          "item": "https://thenutsbowl.com/calculator.html"
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- ── Fonts ─────────────────────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- ── Favicon ──────────────────────────────────────────────── -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" href="assets/favicon.svg" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/calculator.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════ NAVBAR ══════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html#hero" class="nav-logo">
+        <img src="assets/images/brand_logo.png" alt="The Nuts Bowl" class="logo-img" />
+        <span class="brand-name">
+          <span class="brand-the">the</span>
+          <span class="brand-main">nuts bowl</span>
+        </span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about"    class="nav-link">About</a></li>
+        <li><a href="index.html#products" class="nav-link">Products</a></li>
+        <li><a href="calculator.html"     class="nav-link active">Calculator</a></li>
+        <li><a href="index.html#contact"  class="nav-link">Contact</a></li>
+        <li><a href="index.html#contact"  class="btn btn-nav">Shop Now</a></li>
+      </ul>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon">🌿</span>
+        <span class="theme-label">Classic</span>
+      </button>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+  <section class="calc-hero">
+    <div class="container">
+      <span class="section-tag">nutrition tools</span>
+      <h1 class="section-title">Mix<br /><em>Builder.</em></h1>
+      <p class="section-desc">
+        Dial in grams for each product and watch your macros add up in real time.<br />
+        <small>All values per 100 g as per <strong>FSSAI labelling standards</strong>.</small>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ CUSTOM MIX BUILDER ══════════════════════════════ -->
+  <section class="calc-section calc-section-alt" id="mixBuilder">
+    <div class="container">
+
+      <!-- Totals panel — full-width at top -->
+      <div class="mix-totals" id="mixTotals">
+        <div class="mix-totals-top">
+          <div class="mix-goal-row">
+            <label for="mixGoal">Daily protein goal</label>
+            <div class="target-input-wrap">
+              <input type="number" id="mixGoal" class="target-input" min="1" max="500" value="50" />
+              <span class="target-unit">g</span>
+            </div>
+          </div>
+
+          <div class="macro-progress-wrap">
+            <div class="macro-progress-label">
+              <span>Protein</span>
+              <span id="mixProteinDisplay">0 g</span>
+            </div>
+            <div class="macro-progress-track">
+              <div class="macro-progress-fill" id="mixProteinBar" style="width:0%"></div>
+            </div>
+            <span class="macro-progress-goal" id="mixProteinGoalLabel">Goal: 50 g</span>
+          </div>
+        </div>
+
+        <div class="mix-totals-bottom">
+          <div class="mix-macro-item">
+            <span class="mix-macro-value" id="mixCalories">0</span>
+            <span class="mix-macro-label">kcal</span>
+          </div>
+          <div class="mix-macro-item">
+            <span class="mix-macro-value" id="mixCarbs">0 g</span>
+            <span class="mix-macro-label">Carbs</span>
+          </div>
+          <div class="mix-macro-item">
+            <span class="mix-macro-value" id="mixFat">0 g</span>
+            <span class="mix-macro-label">Fat</span>
+          </div>
+          <div class="mix-macro-item">
+            <span class="mix-macro-value" id="mixFibre">0 g</span>
+            <span class="mix-macro-label">Fibre</span>
+          </div>
+          <div class="mix-macro-item">
+            <span class="mix-macro-value" id="mixTotalWeight">0 g</span>
+            <span class="mix-macro-label">Total</span>
+          </div>
+          <button class="mix-reset-btn" id="mixReset">Reset</button>
+        </div>
+      </div>
+
+      <!-- Product sliders grid -->
+      <div class="mix-products" id="mixProducts"></div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html#hero" class="nav-logo">
+            <img src="assets/images/brand_logo.png" alt="The Nuts Bowl" class="logo-img logo-sm" />
+          </a>
+          <p>Good habits. Real benefits.</p>
+        </div>
+        <nav class="footer-links">
+          <a href="index.html#about">About</a>
+          <a href="index.html#products">Products</a>
+          <a href="calculator.html">Calculator</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 The Nuts Bowl · Made with 🍇 in India</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/calculator.js"></script>
+</body>
+</html>

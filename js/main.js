@@ -256,7 +256,9 @@ function _loadData() {
     return `
     <div class="product-card reveal${delay}" data-price-per-kg="0">
       <div class="product-badge${product.badgeClass ? ' ' + product.badgeClass : ''}">${product.badge}</div>
-      <div class="product-emoji">${product.emoji}</div>
+      <div class="product-emoji">${product.image
+        ? `<img src="${product.image}" alt="${product.name}" class="product-img" />`
+        : product.emoji}</div>
       <div class="product-info">
         <span class="product-tag">${product.tag}</span>
         <h3 class="product-name">${product.name}</h3>
@@ -449,7 +451,48 @@ function _loadData() {
       });
   }).catch(err => console.warn('Content load error:', err));
 
-  // ── Cart ──────────────────────────────────────────────────────
+  // ── Calculator CTA preview — driven from nutrition.json ───────
+  const calcCtaPreview = document.getElementById('calcCtaPreview');
+  if (calcCtaPreview) {
+    fetch('js/nutrition.json')
+      .then(r => r.json())
+      .then(nutrition => {
+        // Sort by protein desc, take top 3
+        const top = [...nutrition]
+          .sort((a, b) => b.per100g.protein - a.per100g.protein)
+          .slice(0, 3);
+        const maxProtein = top[0].per100g.protein;
+
+        const rows = top.map(item => {
+          const p   = item.per100g.protein;
+          const pct = Math.round((p / maxProtein) * 100);
+          return `
+          <div class="calc-preview-row">
+            <span class="calc-preview-emoji">${item.emoji}</span>
+            <div class="calc-preview-bar-wrap">
+              <span class="calc-preview-name">${item.name}</span>
+              <div class="calc-preview-bar"><div style="width:${pct}%"></div></div>
+            </div>
+            <span class="calc-preview-val">${p}g <small>/ 100g</small></span>
+          </div>`;
+        }).join('');
+
+        // Pills: top product's full macro snapshot
+        const best = top[0].per100g;
+        const pills = `
+          <div class="calc-cta-pills">
+            <span>🔥 ${best.calories} kcal</span>
+            <span>💪 ${best.protein}g protein</span>
+            <span>🌿 ${best.fibre}g fibre</span>
+            <span>⚡ ${best.carbs}g carbs</span>
+          </div>`;
+
+        calcCtaPreview.innerHTML = rows + pills;
+      })
+      .catch(() => {}); // silently skip if nutrition.json missing
+  }
+
+
   const WHATSAPP_NUMBER = '919870505923';
 
   let cart = [];
@@ -606,6 +649,42 @@ function _loadData() {
       if (cart[idx].qty <= 0) cart.splice(idx, 1);
     }
     renderCart();
+  });
+
+  // ── Image Lightbox ────────────────────────────────────────────
+  const lightbox      = document.getElementById('lightbox');
+  const lightboxImg   = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.hidden = true;
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  // Click on any product image
+  document.addEventListener('click', e => {
+    const img = e.target.closest('.product-img');
+    if (img) openLightbox(img.src, img.alt);
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  // Click backdrop (outside image) to close
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Escape key to close
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
   });
 
 })();

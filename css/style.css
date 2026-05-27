@@ -857,6 +857,71 @@ body.banner-visible .mobile-overlay { top: 38px; }
   font-size: 3.5rem;
   line-height: 1;
 }
+.product-emoji .product-img {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: zoom-in;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-emoji .product-img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+}
+
+/* ── Lightbox ──────────────────────────────────────────────── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: lightboxIn 0.2s ease;
+}
+.lightbox[hidden] { display: none; }
+
+@keyframes lightboxIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.lightbox-img {
+  max-width: min(90vw, 520px);
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  animation: lightboxImgIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes lightboxImgIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  font-size: 1.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  backdrop-filter: blur(4px);
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.28); }
 
 .product-info {
   display: flex;
@@ -1545,6 +1610,93 @@ body.banner-visible .mobile-overlay { top: 38px; }
 
 @media (max-width: 400px) {
   .btn-whatsapp-order { font-size: 0.78rem; padding: 0.55rem 0.75rem; }
+}
+
+/* ─── CALCULATOR CTA SECTION ────────────────────────────────── */
+.calc-cta-section {
+  padding: 5rem 0;
+  background: var(--bg-alt, rgba(0,0,0,0.02));
+}
+
+.calc-cta-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.calc-cta-left { display: flex; flex-direction: column; gap: 1.25rem; }
+.calc-cta-left .btn { align-self: flex-start; }
+
+/* Preview card */
+.calc-cta-preview {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border, rgba(0,0,0,0.08));
+  border-radius: 20px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+}
+
+.calc-preview-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.calc-preview-emoji { font-size: 1.5rem; line-height: 1; flex-shrink: 0; }
+
+.calc-preview-bar-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.calc-preview-name { font-size: 0.8rem; font-weight: 600; opacity: 0.8; }
+
+.calc-preview-bar {
+  height: 6px;
+  background: var(--border, rgba(0,0,0,0.1));
+  border-radius: 99px;
+  overflow: hidden;
+}
+.calc-preview-bar div {
+  height: 100%;
+  background: var(--accent, #2d6a4f);
+  border-radius: 99px;
+}
+
+.calc-preview-val {
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  min-width: 70px;
+  text-align: right;
+}
+.calc-preview-val small { font-weight: 400; opacity: 0.5; font-size: 0.72rem; }
+
+.calc-cta-pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border, rgba(0,0,0,0.07));
+}
+.calc-cta-pills span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: var(--bg-alt, rgba(0,0,0,0.05));
+  border-radius: 20px;
+  padding: 0.25rem 0.65rem;
+  opacity: 0.75;
+}
+
+@media (max-width: 768px) {
+  .calc-cta-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .calc-cta-right { order: -1; }
 }
 
 /* ─── FOOTER ─────────────────────────────────────────────────── */
