@@ -4,89 +4,99 @@
     "badge": "🌱 Superfood",
     "badgeClass": "badge-new",
     "emoji": "𓇢",
+    "image": "assets/images/chiaseeds.webp",
     "tag": "Omega-3 · Fibre Rich",
     "description": "Tiny but mighty — packed with omega-3, calcium and fibre. Add to smoothies, yogurt or just snack on them.",
-    "weights": [ 200, 500, 1000]
+    "weights": [200, 400, 800]
   },
   {
     "name": "Flax Seeds",
     "badge": "💪 High Fibre",
     "badgeClass": "badge-new",
     "emoji": "🌾",
+    "image": "assets/images/flaxseeds.webp",
     "tag": "Omega-3 · Digestive Health",
     "description": "A daily wellness staple — rich in lignans, omega-3 fatty acids and dietary fibre. Great for digestion.",
-    "weights": [ 200, 500, 1000]
+    "weights": [ 200, 400, 800]
   },
   {
     "name": "Pumpkin Seeds",
     "badge": "⭐ Bestseller",
     "badgeClass": "badge-bestseller",
     "emoji": "🎃",
+    "image": "assets/images/pumpkinseeds.webp",
     "tag": "Zinc · Magnesium · Protein",
     "description": "Crunchy, nutty and ridiculously good for you. High in zinc, magnesium and plant protein.",
-    "weights": [ 200, 500, 1000]
+    "weights": [ 200, 400, 800]
   },
   {
     "name": "Sunflower Seeds",
     "badge": "☀️ Daily Snack",
     "badgeClass": "badge-new",
     "emoji": "🌻",
+    "image": "assets/images/sunflowerseeds.webp",
     "tag": "Vitamin E · Heart Healthy",
     "description": "Light, crunchy and loaded with Vitamin E and healthy fats. The perfect on-the-go snack.",
-    "weights": [ 200, 500, 1000]
+    "weights": [ 200, 400, 800]
   },
   {
     "name": "Watermelon Seeds",
     "badge": "💎 Premium",
     "badgeClass": "badge-bestseller",
     "emoji": "🍉",
+    "image": "assets/images/watermelonseeds.webp",
     "tag": "Protein · Iron Rich",
     "description": "Don't spit them out — eat them! High in protein, iron and magnesium. A surprisingly powerful seed.",
-    "weights": [ 200, 500, 1000]
+    "weights": [ 200, 400, 800]
   },
   {
     "name": "Muskmelon Seeds",
     "badge": "🍈 Exotic",
     "badgeClass": "badge-new",
     "emoji": "🍈",
+    "image": "assets/images/muskmelonseeds.webp",
     "tag": "Antioxidants · Immunity",
     "description": "Mild, creamy and nutrient-dense. Rich in antioxidants and immunity-boosting vitamins.",
-    "weights": [ 200, 500, 1000]
+    "weights": [ 200, 400, 800]
   },
   {
     "name": "Edamame",
     "badge": "🌿 Plant Protein",
     "badgeClass": "badge-new",
     "emoji": "🫛",
+    "image": "assets/images/edamame.webp",
     "tag": "High Protein · Low Carb",
     "description": "Young soybeans roasted to perfection — a satisfying, high-protein snack that keeps you full longer.",
-    "weights": [200, 500]
+    "weights": [ 200, 400]
   },
   {
     "name": "Black Raisins",
     "badge": "🍇 Natural Sweet",
     "badgeClass": "badge-new",
     "emoji": "🍇",
+    "image": "assets/images/black_resins.webp",
     "tag": "Iron · Antioxidants",
     "description": "Naturally sweet and iron-rich. Great for energy, skin health and keeping mid-day cravings in check.",
-    "weights": [200, 500, 1000]
+    "weights": [ 200, 400, 800]
   },
   {
     "name": "Cranberry",
     "badge": "🍒 Tangy & Tasty",
     "badgeClass": "badge-bestseller",
     "emoji": "🍒",
+    "image": "assets/images/cranberry.webp",
     "tag": "Antioxidants · Vitamin C",
     "description": "Tart, chewy and packed with antioxidants. Brilliant in trail mixes, oatmeal or straight from the bag.",
-    "weights": [200, 500, 1000]
+    "weights": [ 200, 400]
   },
   {
     "name": "Blueberry",
     "badge": "🫐 Superfruit",
     "badgeClass": "badge-bestseller",
     "emoji": "🫐",
+    "image": "assets/images/blueberry.webp",
     "tag": "Brain Health · Antioxidants",
     "description": "Nature's brain food. Bursting with antioxidants and phytoflavonoids — your daily dose of wellness.",
-    "weights": [200, 500]
+    "weights": [ 200, 400]
   }
 ]

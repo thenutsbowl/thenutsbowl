@@ -311,6 +311,31 @@
     </div>
   </div>
 
+  <!-- ═══════════════════════════════════════ ORDER DETAILS MODAL ══════════════════════════════════ -->
+  <div class="order-modal" id="orderModal" hidden aria-modal="true" role="dialog" aria-label="Enter delivery details">
+    <div class="order-modal-card">
+      <div class="order-modal-header">
+        <span class="order-modal-title">📦 Delivery Details</span>
+        <button class="order-modal-close" id="orderModalClose" aria-label="Close">✕</button>
+      </div>
+      <p class="order-modal-subtitle">We'll add your details to the WhatsApp message.</p>
+      <form class="order-modal-form" id="orderForm" novalidate>
+        <label class="order-modal-label" for="orderName">Name</label>
+        <input class="order-modal-input" id="orderName" type="text" placeholder="Your full name" required autocomplete="name" />
+
+        <label class="order-modal-label" for="orderAddress">Address</label>
+        <textarea class="order-modal-input order-modal-textarea" id="orderAddress" placeholder="House / Street / Area" required autocomplete="street-address"></textarea>
+
+        <label class="order-modal-label" for="orderPincode">Pincode</label>
+        <input class="order-modal-input" id="orderPincode" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="6-digit pincode" required autocomplete="postal-code" />
+
+        <button class="btn btn-whatsapp-order order-modal-submit" type="submit">
+          Send Order on WhatsApp 📲
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- ═══════════════════════════════════════ IMAGE LIGHTBOX ═══════════════════════════════════════ -->
   <div class="lightbox" id="lightbox" hidden aria-modal="true" role="dialog" aria-label="Image preview">
     <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>

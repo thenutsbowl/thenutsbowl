@@ -511,11 +511,15 @@ function _loadData() {
   const cartWhatsappBtn = document.getElementById('cartWhatsappBtn');
   const cartChevron     = document.getElementById('cartChevron');
 
-  function buildWhatsAppUrl() {
+  function buildWhatsAppUrl(name, address, pincode) {
     const lines = cart.map(
       item => `• ${item.emoji} ${item.name} x${item.qty} — ₹${item.price * item.qty}`
     );
     const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const deliveryLines = [];
+    if (name)    deliveryLines.push(`Name: ${name}`);
+    if (address) deliveryLines.push(`Address: ${address}`);
+    if (pincode) deliveryLines.push(`Pincode: ${pincode}`);
     const text = [
       "Hi! I'd like to place an order \uD83E\uDD5C",
       '',
@@ -523,6 +527,7 @@ function _loadData() {
       ...lines,
       '',
       `Total: ₹${total}`,
+      ...(deliveryLines.length ? ['', 'Delivery Details:', ...deliveryLines] : []),
       '',
       'Please confirm availability!'
     ].join('\n');
@@ -540,10 +545,6 @@ function _loadData() {
     cartBarCount.textContent = `${count} item${count !== 1 ? 's' : ''}`;
     cartBarTotal.textContent = `₹${total}`;
     cartDrawerTotal.textContent = `₹${total}`;
-
-    const waUrl = buildWhatsAppUrl();
-    cartBarWhatsapp.href = waUrl;
-    cartWhatsappBtn.href = waUrl;
 
     if (count === 0) {
       cartWidget.classList.remove('cart-visible');
@@ -661,6 +662,67 @@ function _loadData() {
     renderCart();
   });
 
+  // ── Order Details Modal ───────────────────────────────────────
+  const orderModal      = document.getElementById('orderModal');
+  const orderModalClose = document.getElementById('orderModalClose');
+  const orderForm       = document.getElementById('orderForm');
+  const orderNameInput  = document.getElementById('orderName');
+  const orderAddrInput  = document.getElementById('orderAddress');
+  const orderPinInput   = document.getElementById('orderPincode');
+
+  function openOrderModal() {
+    orderModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    orderNameInput.focus();
+  }
+
+  function closeOrderModal() {
+    orderModal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  [cartBarWhatsapp, cartWhatsappBtn].forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      openOrderModal();
+    });
+  });
+
+  orderModalClose.addEventListener('click', closeOrderModal);
+
+  orderModal.addEventListener('click', e => {
+    if (e.target === orderModal) closeOrderModal();
+  });
+
+  orderForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    // Inline validation
+    let valid = true;
+    [orderNameInput, orderAddrInput, orderPinInput].forEach(field => {
+      if (!field.value.trim() || (field === orderPinInput && !/^\d{6}$/.test(field.value.trim()))) {
+        field.classList.add('invalid');
+        valid = false;
+      } else {
+        field.classList.remove('invalid');
+      }
+    });
+    if (!valid) return;
+
+    const url = buildWhatsAppUrl(
+      orderNameInput.value.trim(),
+      orderAddrInput.value.trim(),
+      orderPinInput.value.trim()
+    );
+    closeOrderModal();
+    window.open(url, '_blank', 'noopener,noreferrer');
+  });
+
+  // Remove invalid highlight on input
+  [orderNameInput, orderAddrInput, orderPinInput].forEach(field => {
+    field.addEventListener('input', () => field.classList.remove('invalid'));
+  });
+
   // ── Image Lightbox ────────────────────────────────────────────
   const lightbox      = document.getElementById('lightbox');
   const lightboxImg   = document.getElementById('lightboxImg');
@@ -694,7 +756,10 @@ function _loadData() {
 
   // Escape key to close
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+    if (e.key === 'Escape') {
+      if (!orderModal.hidden) closeOrderModal();
+      else if (!lightbox.hidden) closeLightbox();
+    }
   });
 
 })();
